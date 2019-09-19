@@ -1,0 +1,32 @@
+Download demo site from the following url
+git clone https://github.com/angular/quickstart.git quickstart
+
+npm install
+
+https://github.com/angular/quickstart
+extract it  and rename it and open the folder into terminal or command prompt
+
+install nodejs
+npm install
+npm config set proxy <proxy>
+
+npm cache clean
+npm install -g @angular/cli@latest
+npm install --save-dev @angular/cli@latest
+run below command
+ng serve
+
+set below in 
+
+lan setting-> advanced -> put proxy in it.
+
+put angular.io proxy in it
+
+paste it in npmrc given below for 
+
+
+ng update @angular/cli --migrate-only --from=1.7.3
+
+
+npm cache clean --fo
+

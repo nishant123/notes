@@ -1,0 +1,9 @@
+How is change detection implemented?
+Angular can detect when component data changes, and then automatically re-render the view to reflect that change. But how can it do so after such a low-level event like the click of a button, that can happen anywhere on the page?
+
+
+How does this low-level runtime patching work?
+This low-level patching of browser APIs is done by a library shipped with Angular called Zone.js. It's important to have an idea of what a zone is.
+
+A zone is nothing more than an execution context that survives multiple Javascript VM execution turns. It's a generic mechanism which we can use to add extra functionality to the browser. Angular uses Zones internally to trigger change detection, but another possible use would be to do application profiling, or keeping track of long stack traces that run across multiple VM turns.
+
