@@ -1,0 +1,3 @@
+ctrl+p -> for visual studio code file find like index.html
+
+alt -> to visible menu

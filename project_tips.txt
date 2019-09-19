@@ -1,0 +1,16 @@
+use console to check warnings like sanitization happens
+use google to check issues
+take help like from shrikant jha for programming related who is outside the project
+open the general.txt file in the morning first.
+do not use ist keyword 
+divide task into subtasks on copy then do one by one and 
+compete with spreadsheet daily wise in spreadsheet only mention the time for house work only. 
+write wsr spreadsheet carefully like employee department   usecase and generated component in angular framework
+Checked the generated components with another angular project
+write the email very carefully so rem it always
+approach noticed
+always write the email carefully. like anything else you put take time and read twice to send the email and use the appropriate words 
+try to increase the speed daily wise 
+read email care fully like 1:30 meeting you have not attend
+
+

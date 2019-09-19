@@ -1,0 +1,28 @@
+https://www.concretepage.com/angular-2/angular-4-crud-example
+
+Step-1: Open the command prompt and run the following command.
+npm install -g json-server 
+
+Step-2: Create a db.json file in a directory. In our demo we will perform operations on articles with three fields that are id, title and category. 
+db.json
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Android AsyncTask Example",
+      "category": "Android"
+    }
+  ]
+} 
+
+Step-3: Now we need to run the json-server. Go to the directory where db.json file is lying and then run following command.
+json-server --watch db.json 
+
+Step-4: In this way, we are ready to use json-server with following URLs.
+http://localhost:3000/articles The above URL will fetch all articles. 
+Step-5: For CRUD operation we need to use following URLs. 
+1. GET /articles : Fetches all articles. 
+2. GET /articles/1 : Fetches article by id. 
+3. POST /articles : Create article. 
+4. PUT /articles/1 : Update article by id. 
+5. DELETE /articles/1 : Delete article by id. 

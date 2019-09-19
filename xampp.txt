@@ -1,0 +1,4 @@
+
+Open xampp 
+
+go to services -> world wide web publishing close

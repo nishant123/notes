@@ -1,0 +1,1 @@
+while connecting to mongodb net should be connected otherwise throw error
