@@ -7,3 +7,25 @@ This low-level patching of browser APIs is done by a library shipped with Angula
 
 A zone is nothing more than an execution context that survives multiple Javascript VM execution turns. It's a generic mechanism which we can use to add extra functionality to the browser. Angular uses Zones internally to trigger change detection, but another possible use would be to do application profiling, or keeping track of long stack traces that run across multiple VM turns.
 
+yes, Zone and NgZone is used to automatically trigger change detection as a result of async operations. But since change detection is a separate mechanism it can successfully work without Zone and NgZone. In the first chapter I will show how Angular can be used without zone.js. Second part of the article explains how Angular and zone.js interact together through NgZone. In the end I’ll also show why automatic change detection sometimes doesn’t work with 3rd party libraries like Google API Client Library (gapi).
+
+it’s expected since NgZone is not used and hence change detection is not triggered automatically. Yet it still works fine if we trigger it manually. This can be done by injecting ApplicationRef and triggering tick method to start change detection:
+
+export class AppComponent  {
+    name = 'Angular 4';
+
+    constructor(app: ApplicationRef) {
+        setTimeout(()=>{
+            this.name = 'updated';
+            app.tick();
+        }, 1000);
+    }
+	
+	To summarize, the point of the above demonstration is to show you that zone.js and NgZone in particular are not part of change detection implementation. It’s a very convenient mechanism to trigger change detection automatically by calling app.tick() instead of doing it manually at certain points. We will see in a minute what those points.
+	
+	How NgZone uses Zones
+In my previous article on Zone (zone.js) I described in depth the inner working and API that Zone provides. There I explained the core concepts of forking a zone and running a task in a particular zone. I’ll be referring to those concepts here.
+I also demonstrated two capabilities that Zone provides — context propagation and outstanding asynchronous tasks tracking. Angular implements NgZone class that relies heavily on the tasks tracking mechanism.
+NgZone is just a wrapper around a forked child zone:
+
+

@@ -1,0 +1,3 @@
+ng g ngx-spec:spec <file path>
+
+ng test --codeCoverage=true
