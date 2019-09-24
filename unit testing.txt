@@ -1,3 +1,97 @@
 ng g ngx-spec:spec <file path>
 
 ng test --codeCoverage=true
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+describe('AddTheaterComponent', () => {
+  
+});
+
+
+
+how to mock data and do not use service
+function 15 lines of code recommend
+simontest extension 
+it will help in generate 
+
+html should not use only check methods are working or not
+fdescribe for a particular file to be tested
+
+
+mocking the service
+ take swagger response and copy into json file and use it.
+testbed.get fro purchase service 
+to get service
+spyon to call api internally
+transact-account-option.component.spec.ts
+coverage in index.html you will get coverage things
+
+beforeeach mockdata can pass in it
+beforeall only once it will run
+2nd time it will change
+like value will be 3
+
+afterall clear the data like fixture and so on
+
+generic service see
+
+fit to run a particular it
+conditional coverage (if condition not satisfy then it goes to else condition)
+
+tobe
+tobetruthy
+
+karma.conf.js for browser different you can set for testing
+from for bulk data
+of with observable one data
+
+store also work as observable
+sell-common-destination.component.ts for store
+in store 2 method select and dispatch imp
+
+by spy you can call store in testing
+
+karma help in executing test cases in browser
+
+jasmine cheatsheet use  for writing method
+
+for code coverage simon is useful and method should be less than 15 lines
+
+shiva ask if issue faces
+
+
+beforeeach for every test case like service integrate
+tobe for value integrate
+use console.log in ts file and call the function using spec file it will print the file.
+
+generate the spec file 
+
+
+
+  
+  
+  Ram unit test cases recommendation
+  
+  anoop
+  
+  create stub for all the services
+  {provide: ser, stub}
+  we need to mock a service
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
