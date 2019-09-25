@@ -28,4 +28,142 @@ In my previous article on Zone (zone.js) I described in depth the inner working 
 I also demonstrated two capabilities that Zone provides — context propagation and outstanding asynchronous tasks tracking. Angular implements NgZone class that relies heavily on the tasks tracking mechanism.
 NgZone is just a wrapper around a forked child zone:
 
+bootstrap in angular 
+
+Method 1: Using Angular CLI (npm install). From the command line interface install bootstrap and references it in angular.json
+npm install bootstrap --save
+
+
+https://angular.io/guide/bootstrapping
+
+An NgModule describes how the application parts fit together. Every application has at least one Angular module, the root module that you bootstrap to launch the application. By convention, it is usually called AppModule.
+
+If you use the Angular CLI to generate an app, the default AppModule is as follows:
+
+The @NgModule decorator identifies AppModule as an NgModule class. @NgModule takes a metadata object that tells Angular how to compile and launch the application.
+
+declarations—this application's lone component.
+imports—import BrowserModule to have browser specific services such as DOM rendering, sanitization, and location.
+providers—the service providers.
+bootstrap—the root component that Angular creates and inserts into the index.html host web page.
+The default application created by the Angular CLI only has one component, AppComponent, so it is in both the declarations and the bootstrap arrays.
+
+The declarations array
+The module's declarations array tells Angular which components belong to that module. As you create more components, add them to declarations.
+
+You must declare every component in exactly one NgModule class. If you use a component without declaring it, Angular returns an error message.
+
+The declarations array only takes declarables. Declarables are components, directives and pipes. All of a module's declarables must be in the declarations array. Declarables must belong to exactly one module. The compiler emits an error if you try to declare the same class in more than one module.
+
+These declared classes are visible within the module but invisible to components in a different module unless they are exported from this module and the other module imports this one.
+
+An example of what goes into a declarations array follows:
+
+content_copy
+declarations: [
+  YourComponent,
+  YourPipe,
+  YourDirective
+],
+A declarable can only belong to one module, so only declare it in one @NgModule. When you need it elsewhere, import the module that has the declarable you need in it.
+
+Only @NgModule references go in the imports array.
+
+
+https://angular.io/guide/bootstrapping
+
+An Attribute directive changes the appearance or behavior of a DOM element. ngclass
+There are three kinds of directives in Angular:
+
+Components—directives with a template. like popup
+Structural directives—change the DOM layout by adding and removing DOM elements.  if else 
+Attribute directives—change the appearance or behavior of an element, component, or another directive. ngclass 
+
+ng generate directive highlight
+
+what is diff b/w directive and component
+what is metadata with eg 
+
+import { Directive, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[appHighlight]'
+})
+export class HighlightDirective {
+    constructor(el: ElementRef) {
+       el.nativeElement.style.backgroundColor = 'yellow';
+    }
+}
+
+<p appHighlight>Highlight me!</p>
+
+import { Directive, ElementRef, HostListener } from '@angular/core';
+
+Then add two eventhandlers that respond when the mouse enters or leaves, each adorned by the HostListener decorator.
+
+@HostListener('mouseenter') onMouseEnter() {
+  this.highlight('yellow');
+}
+
+@HostListener('mouseleave') onMouseLeave() {
+  this.highlight(null);
+}
+
+private highlight(color: string) {
+  this.el.nativeElement.style.backgroundColor = color;
+}
+
+The @HostListener decorator lets you subscribe to events of the DOM element that hosts an attribute directive, the <p> in this case.
+
+src/app/highlight.directive.ts (constructor)
+content_copy
+constructor(private el: ElementRef) { }
+
+Pass values into the directive with an @Input data binding
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+
+@Input() highlightColor: string;
+<p appHighlight [highlightColor]="'orange'">Highlighted in orange</p>
+<p appHighlight [highlightColor]="color">
+
+what is use of main.ts file
+https://angular.io/guide/architecture
+
+
+main.ts is the entry point of your application , compiles the application with just-in-time and bootstraps the application .Angular can be bootstrapped in multiple environments we need to import a module specific to the environment. in which angular looks for which module would run first.
+
+// The browser platform with a compiler
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+// The app module
+
+import { AppModule } from './app/app.module';
+
+// Compile and launch the module
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+
+
+APP.MODULE.TS
+
+This is root module that tells Angular how to assemble the application . Every Angular app has a root module class
+
+@NgModule — takes a metadata object that tells Angular how to compile and launch the application.
+
+Imports — the BrowserModule that this and every application needs to run in a browser.
+
+Declarations — the application's component.
+
+Bootstrap — this is the root component tells which component to run first.
+
+enableProdMode - Disable Angular's development mode, which turns off assertions and other checks within the framework.
+
+platformBrowserDynamic - To boostrap your app for browsers
+
+AppModule - The root module which inform Angular about various files and codes.
+
+environment - Environment Variables in Angular read this
+
+app.module.ts:
 
