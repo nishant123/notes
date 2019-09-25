@@ -1,3 +1,5 @@
+https://angular.io/guide/testing
+
 ng g ngx-spec:spec <file path>
 
 ng test --codeCoverage=true
@@ -82,13 +84,115 @@ generate the spec file
   we need to mock a service
   
   
+  test code
+  
+  import {
+  async, ComponentFixture, fakeAsync, inject, TestBed, tick
+} from '@angular/core/testing';
+
+import { Router }       from '@angular/router';
+
+import {
+  ActivatedRoute, ActivatedRouteStub, asyncData, click, newEvent
+} from '../../testing';
+
+import { Hero }                from '../model/hero';
+import { HeroDetailComponent } from './hero-detail.component';
+import { HeroDetailService }   from './hero-detail.service';
+import { HeroModule }          from './hero.module';
+
+
+  
+beforeEach(async(() => {
+
+}));
+  
+beforeEach(async(() => {
+    const routerSpy = createRouterSpy();
+
+    TestBed.configureTestingModule({
+      imports:   [ HeroModule ],
+  //  declarations: [ HeroDetailComponent ], // NO!  DOUBLE DECLARATION
+      providers: [
+        { provide: ActivatedRoute, useValue: activatedRoute },
+        { provide: HeroService,    useClass: TestHeroService },
+        { provide: Router,         useValue: routerSpy},
+      ]
+    })
+    .compileComponents();
+  }));
+  
+  import { async, ComponentFixture, TestBed } from '@angular/core/testing';
   
   
+  constructor(fixture: ComponentFixture<HeroDetailComponent>) {
+
+    // spy on component's `gotoList()` method
+    const component = fixture.componentInstance;
+	
+  }
+  
+ComponentFixture
+The ComponentFixture is a test harness for interacting with the created component and its corresponding element.
+
+Access the component instance through the fixture and confirm it exists with a Jasmine expectation:
+
+The ng test command builds the app in watch mode, and launches the Karma test runner.
+
+Code coverage enforcement
+The code coverage percentages let you estimate how much of your code is tested. If your team decides on a set minimum amount to be unit tested, you can enforce this minimum with the Angular CLI.
+
+For example, suppose you want the code base to have a minimum of 80% code coverage. To enable this, open the Karma test platform configuration file, karma.conf.js, and add the following in the coverageIstanbulReporter: key.
+
+content_copy
+coverageIstanbulReporter: {
+  reports: [ 'html', 'lcovonly' ],
+  fixWebpackSourcePaths: true,
+  thresholds: {
+    statements: 80,
+    lines: 80,
+    branches: 80,
+    functions: 80
+  }
+}
+The thresholds property causes the tool to enforce a minimum of 80% code coverage when the unit tests are run in the project.
+
+Service Tests
+Services are often the easiest files to unit test. Here are some synchronous and asynchronous unit tests of the ValueService written without assistance from Angular testing utilities.
   
   
-  
-  
-  
+// Straight Jasmine testing without Angular's testing support
+describe('ValueService', () => {
+  let service: ValueService;
+  beforeEach(() => { service = new ValueService(); });
+
+  it('#getValue should return real value', () => {
+    expect(service.getValue()).toBe('real value');
+  });
+
+  it('#getObservableValue should return value from observable',
+    (done: DoneFn) => {
+    service.getObservableValue().subscribe(value => {
+      expect(value).toBe('observable value');
+      done();
+    });
+  });
+
+  it('#getPromiseValue should return value from a promise',
+    (done: DoneFn) => {
+    service.getPromiseValue().then(value => {
+      expect(value).toBe('promise value');
+      done();
+    });
+  });
+});
+
+Services with dependencies
+Services often depend on other services that Angular injects into the constructor. In many cases, it's easy to create and inject these dependencies by hand while calling the service's constructor.
+
+The MasterService is a simple example:
+
+
   
 
   

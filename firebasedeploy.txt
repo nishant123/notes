@@ -1,0 +1,37 @@
+Firebase Deployment for SPA
+
+Step 1	
+
+ Vist https://firebase.google.com/, login and go to console.
+ 
+Click on add project, create a new project named – angular-301 or something. 
+
+
+Step 2
+
+Install firebase-tools globally
+npm install -g firebase-tools
+Step 3
+Kindly switch over to mobile hotspot as Mindtree network blocks the following
+
+In command prompt type  
+firebase login
+
+This will take you to the login page of google, please login.
+	 
+Step 4
+
+firebase init
+For the most part, you can stick with the default settings, except for the following questions:
+1.	Choose hosting on the first question
+2.	Change public folder to dist/your-app-name when asked (it defaults to public)
+3.	Configure as single page app? Yes
+4.	If firebase asks to overwrite your index.html file, just say NO.
+Step 5
+
+npm run build
+
+Step 6
+	Change from Mindtree network for this step.
+firebase deploy
+
