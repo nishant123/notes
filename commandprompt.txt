@@ -15,29 +15,14 @@ mongod
 robocopy D:\angular6_demo\angular6 D:\nishant\project\angular6\angular6 /e
 
 
-robocopy C:\cdrive\capstone3\bookmymovie\movieprjassign\movie301_nishant\node_modules C:\cdrive\angular301-master_deep\node_modules /e
-
-
-
 to open command window
 
 ctrl + shift and right click of mouse to open command window 
 
 
-robocopy D:\codemill\CodeMill-Workspace-232\CodeMill-Workspace-232\archetypes\angular_framework\node_modules D:\codemill\CodeMill-Workspace-232\CodeMill-Workspace-232\archetypes\customer\test\archetype6\node_modules /e
 
+rmdir /s <dir path>
 
-robocopy D:\codemill\CodeMill-Workspace-232\CodeMill-Workspace-232\archetypes\angular_framework\node_modules D:\codemill\CodeMill-Workspace-232\CodeMill-Workspace-232\archetypes\customer\test\archetype7\node_modules /e
-
-
-rmdir /s D:\codemill\CodeMill-Workspace-232\CodeMill-Workspace-232\archetypes\customer\test\archetype6\node_modules
-
-
-
-
-D:\codemill\Labs\api_testdb\node_modules
-
-robocopy D:\codemill\Labs\api_testdb\node_modules D:\codemill\CodeMill-Workspace-232\CodeMill-Workspace-232\genprojects\generated_archetype\test_generated\test_generated_backend\node_modules /e
 
 
 
