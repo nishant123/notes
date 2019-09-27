@@ -1,0 +1,36 @@
+rajor and 8.0
+individual db for individual services like to create one field lot of discussion goes on higher level
+container db not
+try db with azure sql and so on
+xamarin -> free and open source 
+f.b.u
+portal azure 
+create resource 
+devops project 
+nodejs
+express js
+webapp for container
+done 
+ajure dev ops pipeline
+end to end configure
+source code you can modify
+code -> source code 
+take git clone and can commit
+ci and cd -> commit -> ci -> edit code -> 
+ci/cd pipeline 
+ci (build)
+cd (dev)
+ajure devops
+new pipeline 
+github repo 
+express 
+docker
+
+setting 
+preview features
+multi stage pipeline
+deploy to azure kubernetes services 
+container reg -> image name -> service post
+dev.azure.com
+yaml file creating 
+azure and bamboo type
