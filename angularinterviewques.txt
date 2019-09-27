@@ -167,3 +167,6 @@ environment - Environment Variables in Angular read this
 
 app.module.ts:
 
+Component
+It is also a type of directive with template,styles and logic part which is most famous type of directive among all in Angular2. In this type of directive you can use other directives whether it is custom or builtin in the @Component annotation like following:
+
