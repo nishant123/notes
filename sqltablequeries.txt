@@ -1,0 +1,226 @@
+CREATE TABLE tblusers (
+    id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    username varchar(255),
+    password varchar(255),
+    points_stage int,
+    points_secure int,
+	points_familiar int,
+	points_longinvestment int,
+	points_needs int,
+	points_investexperience int,
+	points_objective int,
+	points_divide int,
+	points_chooseportfolio int,
+	points_inflation int,
+	points_taxsavings int
+);
+
+
+CREATE TABLE tblassets (
+    id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    assetallocationtype varchar(25),
+    minpoints int,
+    maxpoints int,
+    assetallocation varchar(25),
+    description varchar(25)
+);
+CREATE TABLE tbloptions (
+    id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    name varchar(55),
+    description varchar(255),
+    points varchar(25),
+    type_opt varchar(255)
+);
+
+ALTER TABLE tblassets ALTER COLUMN assetallocationtype VARCHAR (432);
+ALTER TABLE tblassets ALTER COLUMN assetallocation VARCHAR (432);
+ALTER TABLE tblassets ALTER COLUMN description VARCHAR (432);
+
+
+
+INSERT INTO tblassets (assetallocationtype, minpoints, maxpoints, assetallocation, description)
+VALUES ('Conservative Asset Allocation', 11,25, 'Stocks 20%, Bonds 55%, Cash 25%', 'For investors who are predominantly risk averse. Primary focus is on portfolio stability and preservation of capital.');
+INSERT INTO tblassets (assetallocationtype, minpoints, maxpoints, assetallocation, description)
+VALUES ('Moderately Conservative Asset Allocation', 25, 40, 'Stocks 40%, Bonds 50%, Cash 10%', 'For investors who are somewhat risk averse. Primary focus is to achieve a modest level of portfolio appreciation.');
+INSERT INTO tblassets (assetallocationtype, minpoints, maxpoints, assetallocation, description)
+VALUES ('Moderate Asset Allocation', 40,55, 'Stocks 60%, Bonds 35%, Cash 5%', 'For investors who are willing to take a moderate level of risk. Primary emphasis is to strike a balance between portfolio stability and portfolio appreciation.');
+INSERT INTO tblassets (assetallocationtype, minpoints, maxpoints, assetallocation, description)
+VALUES ('Moderately Aggressive Asset Allocation', 55,70, 'Stocks 70%, Bonds 20%, Cash 5%', 'For investors who are willing to take a fair amount of risk. Primary emphasis is on achieving portfolio appreciation over time.');
+INSERT INTO tblassets (assetallocationtype, minpoints, maxpoints, assetallocation, description)
+VALUES ('Aggressive Asset Allocation', 70, 80, 'Stocks 80%, Bonds 15%, Cash 5%', 'For investors who are willing to take  substantial risk. Primary emphasis is on achieving substantial portfolio appreciation over time.');
+
+
+
+INSERT INTO tbloptions (name, description, points, type_opt)
+VALUES ('Single with few financial burdens', 'Ready to accumulate wealth for long term and short term goals', 5, 'STAGE');
+INSERT INTO tbloptions (name, description, points, type_opt)
+VALUES ('A couple with no kids', 'Preparing for the future and having higher incomes you are expecting to have or have a high purchase rate of household and consumer items.', 3, 'STAGE');
+INSERT INTO tbloptions (name, description, points, type_opt)
+VALUES ('Young family with a home', 'You have high mortgage costs and childcare costs and maintain only few investments.', 1, 'STAGE');
+INSERT INTO tbloptions (name, description, points, type_opt)
+VALUES ('Mature family', 'You are in your peak earning years and mortgage is under control. You are investing from a long term savings perspective.', 5, 'STAGE');
+INSERT INTO tbloptions (name, description, points, type_opt)
+VALUES ('Planning for retirement', 'You are investing from a retirement planning perspective. The goal is to achieve financial independence and you are assessing options to invest given desired retirement lifestyle.', 3, 'STAGE');
+INSERT INTO tbloptions (name, description, points, type_opt)
+VALUES ('Retired', 'You are investing from a retirement perspective. You rely on funds and investments to maintain your lifestyle. You may be receiving a government pension or a superannuation or a defined contribution.', 1, 'STAGE');
+INSERT INTO tbloptions (name, points, type_opt)
+VALUES ('Not secure', 1, 'SECURE');
+INSERT INTO tbloptions (name, points, type_opt)
+VALUES ('Somewhat secure', 3, 'SECURE');
+INSERT INTO tbloptions (name, points, type_opt)
+VALUES ('Fairly secure', 5, 'SECURE');
+
+
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Not familiar at all', 'Not familiar at all with investments and complexity associated with it', 1, 'FAMILIAR');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Not familiar','Not familiar when it comes to investment', 2, 'FAMILIAR');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Somewhat familiar', 'Somewhat familiar. I donot fully understand investments and the markets', 3, 'FAMILIAR');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Fairly familiar', 'Fairly familiar. I understand the various factor which affect investment', 5, 'FAMILIAR');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Very familiar', 'Very familiar. I use research and am an expert while using information to make investment decisions', 7, 'FAMILIAR');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', '4 years or more', 5, 'LONG');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', '3 years', 4, 'LONG');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Upto 3 years', 3, 'LONG');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'This is our first investment', 1, 'LONG');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'In less than 2 years', 1, 'EARLIEST');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'With in 3-5 years', 3, 'EARLIEST');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'With in 6-10 years', 5, 'EARLIEST');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Not for 10 years', 7, 'EARLIEST');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Savings Account and Term Deposits', 1, 'PREVIOUS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Structured Notes', 2, 'PREVIOUS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Mutual Funds', 2, 'PREVIOUS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Islamic Funds', 4, 'PREVIOUS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Bonds', 4, 'PREVIOUS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Stocks/ hedge Funds', 5, 'PREVIOUS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Currency/Margin Trading', 5, 'PREVIOUS');
+
+
+
+
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'I would prefer investments with little or no fluctuation in value and have a low degree of risk associated with them. I am willing to accept the lower return with these investments', 1, 'ACCURATELY');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'I prefer to diversify with a mix of investments that have an emphasis on low risk. I am happy to have a small proportion of the portfolio invested in assets that have higher degree of risk in order to achieve a slightly higher return. I am prepared to accept a negative investment return of 1 in 10 years.', 3, 'ACCURATELY');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'I prefer to have a spread of investments in a balanced portfolio. I am happy to have a negative return of 1 to 7 years.', 5, 'ACCURATELY');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'I prefer to diversify my investments with an emphasis on more investments that have higher returns, but still having a small amount of low risk investments. I am happy to accept a negative return of 1 in 5 years.', 7, 'ACCURATELY');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'I would select investments that have a higher degree of investment price fluctuation so that i can earn higher long term returns. I am happy to accept a negative return of 1 in 3 years to achieve that goal.', 9, 'ACCURATELY');
+
+
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', '100% in Investment A and 0% in Investment B', 1, 'DIVIDE_INVESTMENT');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', '80% in Investment A and 20% in Investment B', 3, 'DIVIDE_INVESTMENT');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', '50% in Investment A and 50% in Investment B', 5, 'DIVIDE_INVESTMENT');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', '20% in Investment A and 80% in Investment B', 7, 'DIVIDE_INVESTMENT');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', '0% in Investment A and 100% in Investment B', 9, 'DIVIDE_INVESTMENT');
+
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Portfolio A', 'Average Annual Return:5.4%, Highest Annual return:11.3%, Lowest Annual return:0.0%', 1, 'PORTFOLIO');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Portfolio B', 'Average Annual Return:7.0%, Highest Annual return:18.3%, Lowest Annual return:5.1%', 3, 'PORTFOLIO');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Portfolio C', 'Average Annual Return:8.7%, Highest Annual return:25.4%, Lowest Annual return:17.8%', 5, 'PORTFOLIO');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Portfolio D', 'Average Annual Return:10.7%, Highest Annual return:32%, Lowest Annual return:29.8%', 7, 'PORTFOLIO');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('Portfolio E', 'Average Annual Return:18.2%, Highest Annual return:56.8%, Lowest Annual return:40%', 9, 'PORTFOLIO');
+
+
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'My investments should be safe, even if it means the returns do not keep pace with inflation', 1, 'INFLATION_RATE');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'I am willing to risk an occasional loss of investment value so that my investments may grow at the same rate as inflation', 3, 'INFLATION_RATE');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'It is important that my investments grow faster than inflation. I am willing to accept some risk to achieve this goal', 5, 'INFLATION_RATE');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'My investments should grow faster than inflation. I am willing to accept considerable risk', 7, 'INFLATION_RATE');
+
+
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Preferably guaranteed returns, before tax savings', 1, 'TAX_SAVINGS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Stable reliable returns minimum tax savings', 3, 'TAX_SAVINGS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Variability in returns, some tax savings', 5, 'TAX_SAVINGS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Moderate Variability in returns, reasonable tax savings', 7, 'TAX_SAVINGS');
+INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'Potentially high returns with risk, maximize tax savings', 9, 'TAX_SAVINGS');
+
+
+
+
+INSERT INTO tblassets (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+INSERT INTO tblassets (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+insert into tblassets
+
+
+CREATE TABLE tblemployee (
+    id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    name varchar(55),
+    salary int    
+);
+
+
+
+
+INSERT INTO tblemployee (name, salary)
+VALUES ('nishant1', 6000);
+INSERT INTO tblemployee (name, salary)
+VALUES ('nishant2', 2000);
+INSERT INTO tblemployee (name, salary)
+VALUES ('nishant3', 3000);
+INSERT INTO tblemployee (name, salary)
+VALUES ('nishant4', 5000);
+INSERT INTO tblemployee (name, salary)
+VALUES ('nishant5', 3000);
+INSERT INTO tblemployee (name, salary)
+VALUES ('nishant6', 7000);
+INSERT INTO tblemployee (name, salary)
+VALUES ('nishant7', 8000);
+
+
+second highest salary
+select top 1 salary from tblemployee  where salary <> (select top 1  salary from tblemployee order by salary desc) order by salary desc
+
+third largest salary
+
+
+WITH CTE AS
+(
+    SELECT salary,
+           RN = ROW_NUMBER() OVER (ORDER BY salary DESC)
+    FROM dbo.tblemployee
+)
+SELECT salary
+FROM CTE
+WHERE RN = 3
+
+
