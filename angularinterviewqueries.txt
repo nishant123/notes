@@ -1,0 +1,14 @@
+1. observables
+2. different types of directives
+3. promise check
+4. unit testing check 
+5. decorators
+6. architecture
+which is meta data object in angular
+communication between two components
+hooks in angular
+use of async pipe 
+materials check
+difference between featured component and featured component
+recommendation for angular guidelines
+check bootstrap also

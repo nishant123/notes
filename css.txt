@@ -1,0 +1,26 @@
+position: relative places an element relative to its current position without changing the layout around it, whereas position: absolute places an element relative to its parent’s position and changing the layout around it.
+
+This is where position relative comes in. Move the green box relative to its current position to 20px from the left and top without changing the layout around it. Thus, leaving a gap for the green box where it would have been had it not been position.
+
+#two {
+  top: 20px;
+  left: 20px;
+  background: green;
+  position: relative;
+}
+
+An element with position: static; is not positioned in any special way; it is always positioned according to the normal flow of the page:
+
+An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and left properties are used to position the element.
+
+A fixed element does not leave a gap in the page where it would normally have been located.
+
+position: sticky;
+An element with position: sticky; is positioned based on the user's scroll position.
+
+A sticky element toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed
+
+When elements are positioned, they can overlap other elements.
+
+The z-index property specifies the stack order of an element (which element should be placed in front of, or behind, the others).
+

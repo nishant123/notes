@@ -224,3 +224,17 @@ FROM CTE
 WHERE RN = 3
 
 
+CREATE OR REPLACE PACKAGE BODY pkg_students_data AS 
+   tot_students NUMBER; 
+PROCEDURE insert_employee () IS 
+   BEGIN 
+      insert into tblemployee(name,salary) values ('nish1',13000); 
+   END; 
+PROCEDURE insert_tbloption () IS 
+   BEGIN 
+   INSERT INTO tbloptions (name,description, points, type_opt)
+VALUES ('', 'nish45', 9, 'check1');
+      
+   END; 
+END pkg_students_data; 
+

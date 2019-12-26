@@ -18,3 +18,18 @@ azure certification code
 expiry 15 feb
 Your Voucher Code is: MSP38F905D1C
 Your Voucher Code is: MSP38C16362C
+
+
+employee
+
+id,name,age ,salary
+
+
+salary
+
+id, salary ,empid,empname,sal_timestamp,desc_trigger
+
+https://www.codeproject.com/Articles/25600/Triggers-SQL-Server
+
+insteadof trigger
+

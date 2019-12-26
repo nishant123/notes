@@ -1,3 +1,538 @@
+best practices for angular
+
+1. Use of Angular CLI
+Angular comes equipped with a command line interface called Angular CLI, which helps you scaffold your code in minutes.
+Angular CLI can be installed easily via terminal by typing in the following command:
+npm install -g @angular/cli
+
+To generate and start a new project locally, us
+ng new PROJECT-NAME
+cd PROJECT-NAME
+ng serve -o
+
+2. Develop Angular apps in modular fashion using core, shared and feature modules
+When you start developing in Angular, you may be tempted to disregard creation of modules for the sake of using components solely. That approach might be fine for smaller apps, but as your app starts to grow, development will become cumbersome. That’s when separation of concerns steps in, which is fueled by a modular Angular app.
+Splitting your app into core, shared and multiple feature modules will make your life much easier. Each module can have its own components, services, directives and pipes.
+
+
+2. Develop Angular apps in modular fashion using core, shared and feature modules
+When you start developing in Angular, you may be tempted to disregard creation of modules for the sake of using components solely. That approach might be fine for smaller apps, but as your app starts to grow, development will become cumbersome. That’s when separation of concerns steps in, which is fueled by a modular Angular app.
+Splitting your app into core, shared and multiple feature modules will make your life much easier. Each module can have its own components, services, directives and pipes.
+Core module should be created of components (i.e. header, main navigation, footer) that will be used across the entire app.
+Shared module can have components, directives and pipes that will be shared across multiple modules and components, but not the entire app necessarily.
+Last but not least are feature modules. Per Angular’s official documentation, feature module is:
+an organizational best practice, as opposed to a concept of the core Angular API. A feature module delivers a cohesive set of functionality focused on a specific application need such as a user workflow, routing, or forms. While you can do everything within the root module, feature modules help you partition the app into focused areas. A feature module collaborates with the root module and with other modules through the services it provides and the components, directives, and pipes that it shares.
+
+
+
+
+
+
+
+
+observable and promise check
+
+In order to show how subscribing works, we need to create a new observable. There is a constructor that you use to create new instances, but for illustration, we can use some methods from the RxJS library that create simple observables of frequently used types:
+
+of(...items)—Returns an Observable instance that synchronously delivers the values provided as arguments.
+from(iterable)—Converts its argument to an Observable instance. This method is commonly used to convert an array to an observable.
+
+
+Observables provide support for passing messages between publishers and subscribers in your application. Observables offer significant benefits over other techniques for event handling, asynchronous programming, and handling multiple values.
+
+Observables are declarative—that is, you define a function for publishing values, but it is not executed until a consumer subscribes to it. The subscribed consumer then receives notifications until the function completes, or until they unsubscribe.
+
+An observable can deliver multiple values of any type—literals, messages, or events, depending on the context. The API for receiving values is the same whether the values are delivered synchronously or asynchronously. Because setup and teardown logic are both handled by the observable, your application code only needs to worry about subscribing to consume values, and when done, unsubscribing. Whether the stream was keystrokes, an HTTP response, or an interval timer, the interface for listening to values and stopping listening is the same.
+
+Because of these advantages, observables are used extensively within Angular, and are recommended for app development as well.
+
+To execute the observable you have created and begin receiving notifications, you call its subscribe() method, passing an observer. This is a JavaScript object that defines the handlers for the notifications you receive. The subscribe() call returns a Subscription object that has an unsubscribe() method, which you call to stop receiving notifications.
+
+
+hat actually the difference is?
+Promise emits a single value while Observable emits multiple values. So, while handling a HTTP request, Promise can manage a single response for the same request, but what if there are multiple responses to the same request, then we have to use Observable. Yes, Observable can handle multiple responses for the same request.
+Let’s implement this with an example.
+
+Promise
+const promise = new Promise((data) =>
+{ data(1);
+  data(2);
+  data(3); })
+.then(element => console.log(‘Promise ‘ + element));
+
+Output
+
+Promise 1
+
+Observable
+
+const observable = new Observable((data) => {
+data.next(1);
+data.next(2);
+data.next(3);
+}).subscribe(element => console.log('Observable ' + element));
+
+Output
+
+Observable 1
+Observable 2
+Observable 3
+
+So, in the above code snippet, I have created promise and observable of Promise and Observable type respectively. But, promise returns the very first value and ignore the remaining values whereas Observable return all the value and print 1, 2, 3 in the console.
+
+Promise is not lazy while Observable is lazy. Observable is lazy in nature and do not return any value until we subscribe.
+
+home.component.ts (Observable)
+
+1
+getMenu() {
+2
+this.homeService.getFoodItem();
+3
+}
+4
+}
+In above example we are not subscribing the observable, so we do not receive the data and even there would be a no network call for this service.
+
+home.component.ts (Observable)
+
+1
+getMenu() {
+2
+this.homeService.getFoodItem().subscribe((data  => {
+3
+this.foodItem = data;
+4
+}),
+5
+error => console.log(error));
+6
+}
+7
+}
+Here, we have subscribed our Observable, so it will simply return the data. But Promise returns the value regardless of then() method.
+
+home.component.ts (Promise)
+
+1
+getMenu() {
+2
+this.homeService.getFoodItem()
+3
+.then((data) => {
+4
+this.foodItem = data;
+5
+});
+6
+}
+Observable is cancellable in nature by invoking unsubscribe() method, but Promise is not cancellable in nature.
+
+Hope this is helpful and give you a basic understanding of how Promise differs from Observable. Please feel free to provide your suggestions 🙂
+
+The RxJS library
+Reactive programming is an asynchronous programming paradigm concerned with data streams and the propagation of change (Wikipedia). RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using observables that makes it easier to compose asynchronous or callback-based code. See (RxJS Docs).
+
+Observable creation functions
+RxJS offers a number of functions that can be used to create new observables. These functions can simplify the process of creating observables from things such as events, timers, promises, and so on. 
+
+Create an observable from a promise
+content_copy
+import { from } from 'rxjs';
+
+// Create an Observable out of a promise
+const data = from(fetch('/api/endpoint'));
+// Subscribe to begin listening for async result
+data.subscribe({
+  next(response) { console.log(response); },
+  error(err) { console.error('Error: ' + err); },
+  complete() { console.log('Completed'); }
+});
+
+
+import { interval } from 'rxjs';
+
+// Create an Observable that will publish a value on an interval
+const secondsCounter = interval(1000);
+// Subscribe to begin publishing values
+secondsCounter.subscribe(n =>
+  console.log(`It's been ${n} seconds since subscribing!`));
+  
+  Create an observable from an event
+  
+  import { fromEvent } from 'rxjs';
+
+const el = document.getElementById('my-element');
+
+// Create an Observable that will publish mouse movements
+const mouseMoves = fromEvent(el, 'mousemove');
+
+// Subscribe to start listening for mouse-move events
+const subscription = mouseMoves.subscribe((evt: MouseEvent) => {
+  // Log coords of mouse movements
+  console.log(`Coords: ${evt.clientX} X ${evt.clientY}`);
+
+  // When the mouse is over the upper-left of the screen,
+  // unsubscribe to stop listening for mouse movements
+  if (evt.clientX < 40 && evt.clientY < 40) {
+    subscription.unsubscribe();
+  }
+});
+
+
+Create an observable that creates an AJAX request
+
+import { ajax } from 'rxjs/ajax';
+
+// Create an Observable that will create an AJAX request
+const apiData = ajax('/api/data');
+// Subscribe to create the request
+apiData.subscribe(res => console.log(res.status, res.response));
+
+Operators are functions that build on the observables foundation to enable sophisticated manipulation of collections. For example, RxJS defines operators such as map(), filter(), concat(), and flatMap().
+
+Operators take configuration options, and they return a function that takes a source observable. When executing this returned function, the operator observes the source observable’s emitted values, transforms them, and returns a new observable of those transformed values. Here is a simple example:
+
+Map operator
+content_copy
+import { map } from 'rxjs/operators';
+
+const nums = of(1, 2, 3);
+
+const squareValues = map((val: number) => val * val);
+const squaredNums = squareValues(nums);
+
+squaredNums.subscribe(x => console.log(x));
+
+
+
+You can use pipes to link operators together. Pipes let you combine multiple functions into a single function. The pipe() function takes as its arguments the functions you want to combine, and returns a new function that, when executed, runs the composed functions in sequence.
+
+A set of operators applied to an observable is a recipe—that is, a set of instructions for producing the values you’re interested in. By itself, the recipe doesn’t do anything. You need to call subscribe() to produce a result through the recipe
+
+
+
+
+
+
+
+import { filter, map } from 'rxjs/operators';
+
+const nums = of(1, 2, 3, 4, 5);
+
+// Create a function that accepts an Observable.
+const squareOddVals = pipe(
+  filter((n: number) => n % 2 !== 0),
+  map(n => n * n)
+);
+
+// Create an Observable that will run the filter and map functions
+const squareOdd = squareOddVals(nums);
+
+// Subscribe to run the combined functions
+squareOdd.subscribe(x => console.log(x));
+
+The pipe() function is also a method on the RxJS Observable, so you use this shorter form to define the same operation:
+
+import { filter, map } from 'rxjs/operators';
+
+const squareOdd = of(1, 2, 3, 4, 5)
+  .pipe(
+    filter(n => n % 2 !== 0),
+    map(n => n * n)
+  );
+
+// Subscribe to get values
+squareOdd.subscribe(x => console.log(x));
+
+
+Common operators
+RxJS provides many operators, but only a handful are used frequently. For a list of operators and usage samples, visit the RxJS API Documentation.
+
+
+Error handling
+In addition to the error() handler that you provide on subscription, RxJS provides the catchError operator that lets you handle known errors in the observable recipe.
+
+For instance, suppose you have an observable that makes an API request and maps to the response from the server. If the server returns an error or the value doesn’t exist, an error is produced. If you catch this error and supply a default value, your stream continues to process values rather than erroring out.
+
+Here's an example of using the catchError operator to do this:
+
+
+
+
+import { ajax } from 'rxjs/ajax';
+import { map, catchError } from 'rxjs/operators';
+// Return "response" from the API. If an error happens,
+// return an empty array.
+const apiData = ajax('/api/data').pipe(
+  map(res => {
+    if (!res.response) {
+      throw new Error('Value expected!');
+    }
+    return res.response;
+  }),
+  catchError(err => of([]))
+);
+
+apiData.subscribe({
+  next(x) { console.log('data: ', x); },
+  error(err) { console.log('errors already caught... will not run'); }
+});
+
+
+
+Naming conventions for observables
+Because Angular applications are mostly written in TypeScript, you will typically know when a variable is an observable. Although the Angular framework does not enforce a naming convention for observables, you will often see observables named with a trailing “$” sign.
+
+
+This can be useful when scanning through code and looking for observable values. Also, if you want a property to store the most recent value from an observable, it can be convenient to simply use the same name with or without the “$”.
+
+
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-stopwatch',
+  templateUrl: './stopwatch.component.html'
+})
+export class StopwatchComponent {
+
+  stopwatchValue: number;
+  stopwatchValue$: Observable<number>;
+
+  start() {
+    this.stopwatchValue$.subscribe(num =>
+      this.stopwatchValue = num
+    );
+  }
+}
+
+
+
+directive
+
+
+At the core, a directive is a function that executes whenever the Angular compiler finds it in the DOM. Angular directives are used to extend the power of the HTML by giving it new syntax. Each directive has a name — either one from the Angular predefined like ng-repeat, or a custom one which can be called anything. And each directive determines where it can be used: in an element, attribute, class or comment.
+
+
+
+Components
+As we saw earlier, components are just directives with templates. Under the hood, they use the directive API and give us a cleaner way to define them.
+
+The other two directive types don’t have templates. Instead, they’re specifically tailored to DOM manipulation.
+
+Attribute directives
+Attribute directives manipulate the DOM by changing its behavior and appearance.
+
+We use attribute directives to apply conditional style to elements, show or hide elements or dynamically change the behavior of a component according to a changing property.
+like  ngclass
+
+Structural directives
+These are specifically tailored to create and destroy DOM elements.
+
+Some attribute directives — like hidden, which shows or hides an element — basically maintain the DOM as it is. But the structural Angular directives are much less DOM friendly, as they add or completely remove elements from the DOM. So, when using these, we have to be extra careful, since we’re actually changing the HTML structure.
+
+import {Directive, ElementRef} from '@angular/core';
+
+@Directive({
+    selector:'[my-error]'
+})
+
+export class MyErrorDirective{
+    constructor(elr:ElementRef){
+        elr.nativeElement.style.background='red';
+    }
+}
+
+After importing the Directive from @angular/core we can then use it. First, we need a selector, which gives a name to the directive. In this case, we call it my-error.
+
+Best practice dictates that we always use a prefix when naming our Angular directives. This way, we’re sure to avoid conflicts with any standard HTML attributes. We also shouldn’t use the ng prefix. That one’s used by Angular, and we don’t want to confuse our custom created Angular directives with Angular predefined ones. In this example, our prefix is my-.
+
+We then created a class, MyErrorDirective. To access any element of our DOM, we need to use ElementRef. Since it also belongs to the @angular/core package, it’s a simple matter of importing it together with the Directive and using it.
+
+We then added the code to actually highlight the constructor of our class.
+
+To be able to use this newly created directive, we need to add it to the declarations on the app.module.ts file:
+
+import { MyErrorDirective } from './app.myerrordirective';
+
+Creating a structural directive
+In the previous section, we saw how to create an attribute directive using Angular. The approach for creating a structural behavior is exactly the same. We create a new file with the code for our directive, then we add it to the declarations, and finally, we use it in our component.
+
+For our structural directive, we’ll implement a copy of the ngIf directive. This way, we’ll not only be implementing a directive, but also taking a look at how Angular directives handle things behind the scenes.
+
+Let’s start with our app.mycustomifdirective.ts file:
+
+
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+
+@Directive({
+    selector: '[myCustomIf]'
+})
+
+export class MyCustomIfDirective {
+
+    constructor(
+        private templateRef: TemplateRef<any>,
+        private viewContainer: ViewContainerRef) { }
+
+    @Input() set myCustomIf(condition: boolean) {
+        if (condition) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+        } else {
+            this.viewContainer.clear();
+        }
+    }
+}
+
+
+As we can see, we’re using a couple of different imports for this one, mainly: Input, TemplateRef and ViewContainerRef. The Input decorator is used to pass data to the component. The TemplateRef one is used to instantiate embedded views. An embedded view represents a part of a layout to be rendered, and it’s linked to a template. Finally, the ViewContainerRef is a container where one or more Views can be attached. Together, these components work as follow
+
+
+
+
+for component 
+
+import { Component, OnInit, Input } from '@angular/core';
+import { Hero } from '../hero';
+
+@Component({
+  selector: 'app-hero-detail',
+  templateUrl: './hero-detail.component.html',
+  styleUrls: ['./hero-detail.component.css']
+})
+
+
+
+Architecture overview
+Angular is a platform and framework for building client applications in HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your apps.
+
+The basic building blocks of an Angular application are NgModules, which provide a compilation context for components. NgModules collect related code into functional sets; an Angular app is defined by a set of NgModules. An app always has at least a root module that enables bootstrapping, and typically has many more feature modules.
+
+Components define views, which are sets of screen elements that Angular can choose among and modify according to your program logic and data.
+
+Components use services, which provide specific functionality not directly related to views. Service providers can be injected into components as dependencies, making your code modular, reusable, and efficient.
+
+Both components and services are simply classes, with decorators that mark their type and provide metadata that tells Angular how to use them.
+
+The metadata for a component class associates it with a template that defines a view. A template combines ordinary HTML with Angular directives and binding markup that allow Angular to modify the HTML before rendering it for display.
+
+The metadata for a service class provides the information Angular needs to make it available to components through dependency injection (DI).
+
+An app's components typically define many views, arranged hierarchically. Angular provides the Router service to help you define navigation paths among views. The router provides sophisticated in-browser navigational capabilities.
+
+
+Modules
+Angular NgModules differ from and complement JavaScript (ES2015) modules. An NgModule declares a compilation context for a set of components that is dedicated to an application domain, a workflow, or a closely related set of capabilities. An NgModule can associate its components with related code, such as services, to form functional units.
+
+Every Angular app has a root module, conventionally named AppModule, which provides the bootstrap mechanism that launches the application. An app typically contains many functional modules.
+
+Like JavaScript modules, NgModules can import functionality from other NgModules, and allow their own functionality to be exported and used by other NgModules. For example, to use the router service in your app, you import the Router NgModule.
+
+Organizing your code into distinct functional modules helps in managing development of complex applications, and in designing for reusability. In addition, this technique lets you take advantage of lazy-loading—that is, loading modules on demand—to minimize the amount of code that needs to be loaded at startup.
+
+Feature Modules
+Feature modules are NgModules for the purpose of organizing code.
+
+For the final sample app with a feature module that this page describes, see the live example / download example.
+
+As your app grows, you can organize code relevant for a specific feature. This helps apply clear boundaries for features. With feature modules, you can keep code related to a specific functionality or feature separate from other code. Delineating areas of your app helps with collaboration between developers and teams, separating directives, and managing the size of the root module.
+
+Feature modules vs. root modules
+A feature module is an organizational best practice, as opposed to a concept of the core Angular API. A feature module delivers a cohesive set of functionality focused on a specific application need such as a user workflow, routing, or forms. While you can do everything within the root module, feature modules help you partition the app into focused areas. A feature module collaborates with the root module and with other modules through the services it provides and the components, directives, and pipes that it shares.
+
+How to make a feature module
+Assuming you already have an app that you created with the Angular CLI, create a feature module using the CLI by entering the following command in the root project directory. Replace CustomerDashboard with the name of your module. You can omit the "Module" suffix from the name because the CLI appends it:
+
+
+ng generate module CustomerDashboard
+
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@NgModule({
+  imports: [
+    CommonModule
+  ],
+  declarations: []
+})
+export class CustomerDashboardModule { }
+
+Importing a feature module
+
+To incorporate the feature module into your app, you have to let the root module, app.module.ts, know about it. Notice the CustomerDashboardModule export at the bottom of customer-dashboard.module.ts. This exposes it so that other modules can get to it. To import it into the AppModule, add it to the imports in app.module.ts and to the imports array:
+
+
+
+Types of Feature Modules
+There are five general categories of feature modules which tend to fall into the following groups:
+
+Domain feature modules.
+Routed feature modules.
+Routing modules.
+Service feature modules.
+Widget feature modules.
+
+Feature Module	Guidelines
+Domain	Domain feature modules deliver a user experience dedicated to a particular application domain like editing a customer or placing an order.
+They typically have a top component that acts as the feature root and private, supporting sub-components descend from it.
+
+Domain feature modules consist mostly of declarations. Only the top component is exported.
+
+Domain feature modules rarely have providers. When they do, the lifetime of the provided services should be the same as the lifetime of the module.
+
+Domain feature modules are typically imported exactly once by a larger feature module.
+
+They might be imported by the root AppModule of a small application that lacks routing.
+
+Routed	Routed feature modules are domain feature modules whose top components are the targets of router navigation routes.
+All lazy-loaded modules are routed feature modules by definition.
+
+Routed feature modules don’t export anything because their components never appear in the template of an external component.
+
+A lazy-loaded routed feature module should not be imported by any module. Doing so would trigger an eager load, defeating the purpose of lazy loading.That means you won’t see them mentioned among the AppModule imports. An eager loaded routed feature module must be imported by another module so that the compiler learns about its components.
+
+Routed feature modules rarely have providers for reasons explained in Lazy Loading Feature Modules. When they do, the lifetime of the provided services should be the same as the lifetime of the module. Don't provide application-wide singleton services in a routed feature module or in a module that the routed module imports.
+
+Routing	
+A routing module provides routing configuration for another module and separates routing concerns from its companion module.
+
+A routing module typically does the following:
+
+Defines routes.
+Adds router configuration to the module's imports.
+Adds guard and resolver service providers to the module's providers.
+The name of the routing module should parallel the name of its companion module, using the suffix "Routing". For example, FooModule in foo.module.ts has a routing module named FooRoutingModule in foo-routing.module.ts. If the companion module is the root AppModule, the AppRoutingModule adds router configuration to its imports with RouterModule.forRoot(routes). All other routing modules are children that import RouterModule.forChild(routes).
+A routing module re-exports the RouterModule as a convenience so that components of the companion module have access to router directives such as RouterLink and RouterOutlet.
+A routing module does not have its own declarations. Components, directives, and pipes are the responsibility of the feature module, not the routing module.
+A routing module should only be imported by its companion module.
+
+Service	
+Service modules provide utility services such as data access and messaging. Ideally, they consist entirely of providers and have no declarations. Angular's HttpClientModule is a good example of a service module.
+
+The root AppModule is the only module that should import service modules.
+
+Widget	
+A widget module makes components, directives, and pipes available to external modules. Many third-party UI component libraries are widget modules.
+
+A widget module should consist entirely of declarations, most of them exported.
+
+A widget module should rarely have providers.
+
+Import widget modules in any module whose component templates need the widgets.
+
+
+
+
+
+
+
+
+
+
+
+
+
 How is change detection implemented?
 Angular can detect when component data changes, and then automatically re-render the view to reflect that change. But how can it do so after such a low-level event like the click of a button, that can happen anywhere on the page?
 

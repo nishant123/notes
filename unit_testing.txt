@@ -1,0 +1,283 @@
+how to mock data and do not use service
+function 15 lines of code recommend
+simontest extension 
+it will help in generate 
+
+html should not use only check methods are working or not
+fdescribe for a particular file to be tested
+
+
+mocking the service
+ take swagger response and copy into json file and use it.
+testbed.get fro purchase service 
+to get service
+spyon to call api internally
+transact-account-option.component.spec.ts
+coverage in index.html you will get coverage things
+
+beforeeach mockdata can pass in it
+beforeall only once it will run
+2nd time it will change
+like value will be 3
+
+afterall clear the data like fixture and so on
+
+generic service see
+
+fit to run a particular it
+conditional coverage (if condition not satisfy then it goes to else condition)
+
+tobe
+tobetruthy
+
+karma.conf.js for browser different you can set for testing
+from for bulk data
+of with observable one data
+
+store also work as observable
+sell-common-destination.component.ts for store
+in store 2 method select and dispatch imp
+
+by spy you can call store in testing
+
+karma help in executing test cases in browser
+
+jasmine cheatsheet use  for writing method
+
+for code coverage simon is useful and method should be less than 15 lines
+
+shiva ask if issue faces
+
+
+beforeeach for every test case like service integrate
+tobe for value integrate
+use console.log in ts file and call the function using spec file it will print the file.
+
+generate the spec file 
+
+
+use observable from
+
+public getUserProfileLabels(): Observable<any> {
+    return Observable.from([{}]);
+  }
+  
+use observable of
+
+public getMyDetails(): Observable<any> {
+    return Observable.of([
+      { partyType: 'HDBROKER' },
+      { partyType: 'SALESCONS' },
+      { partyType: 'SALESCON' },
+      { partyType: 'BROKER' },
+      { partyType: 'CORPINV' }
+    ]);
+}
+  
+  public generateOtp(): Observable<any> {
+    return Observable.of({ result: 'Success' });
+  }
+  
+    public updatedeliverymethod(): Observable<any> {
+    return Observable.of({});
+  }
+  
+  const questions = [
+    {
+      questionId: 'questionId',
+      secretQuestion: 'secretQuestion',
+      secretAnswer: 'secretAnswer'
+    }
+  ];
+  
+  
+  
+  beforeEach(() => {
+    const routerStub = { navigate: () => ({}) };
+    const commonservicestub = {
+      getValue: () => ({
+        subscribe: () => ({})
+      }),
+      
+    };
+    TestBed.configureTestingModule({
+      imports: [FormsModule, ReactiveFormsModule],
+      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [MydetailsComponent],
+      providers: [
+        { provide: Store, useClass: MockStore },
+        { provide: CommonService, useValue: commonservicestub }
+      ]
+    });
+	
+	fixture = TestBed.createComponent(MydetailsComponent);
+    component = fixture.componentInstance;
+	
+	 it('notificationDeliveryMethods defaults to: []', () => {
+    expect(component.notificationDeliveryMethods).toEqual([]);
+  });
+	
+  
+      const service: any = TestBed.get(ProfileService);
+    spyOn(service, 'getCountryDetails').and.returnValue(
+      Observable.from([countrydetailsclonedata])
+    );
+    component.getMyaccessDetails();
+	
+	  it('call ngOnInit', () => {
+    const service: any = TestBed.get(ProfileService);
+    spyOn(service, 'getUserProfileLabels').and.returnValue(
+      Observable.from([labeldata])
+    );
+    const serv: any = TestBed.get(ConfigService);
+    spyOn(serv, 'getEmailId');
+    spyOn(service, 'getCountryDetails').and.returnValue(
+      Observable.from([countrydetailsclonedata])
+    );
+    component.ngOnInit();
+  });
+  
+  it('call the Store Data', () => {
+    const store = TestBed.get(Store);
+    spyOn(store, 'select').and.returnValue(
+      Observable.from([
+        {
+          InternalizationState: Observable.of({
+            countryCode: [''],
+            languageCode: ['USD'],
+            currencyCode: ['']
+          })
+        }
+      ])
+    );
+    component.getInternalizationState();
+  });
+  
+  
+    it('call Validationnotify', () => {
+    component.defaultpreferredNotification = 'EMAIL';
+    component.Validationnotify('EMAIL');
+    component.defaultpreferredNotification = 'SMS';
+    component.Validationnotify('SMS');
+  });
+  
+  
+    it('should call the getAuthenticate', () => {
+    component.defaultHomeTelFlagString = '91-1234-123-456';
+    component.defaultWorkTelFlagString = '91-1234-342-456';
+    component.defaultMobileFlagString = '91-1234-456-456';
+    component.getAuthenticate('', '', '', '123-234', '123-234', '123-234');
+  });
+  
+  
+    it('call updateAuthenticateNotification', () => {
+    component.defaultMobileFlagString = '912323 - flagfsdfs - fdsfs';
+    component.updateAuthenticateNotification('example.com');
+  });
+  
+  
+  
+     /** This is a description of the resendpassword function.
+  @ For resend password section Using This Functionality .
+ */
+  public resendpassword(payload: any): void {
+    this.accessManagementService.resendpasswordfunc(payload, this.configService.getUserName()).subscribe(
+      (response: any) => {
+        if (response === SUCCESS.toUpperCase()) {
+           this.eliModel.info = true;
+           this.eliModel.infomsg = this.labels.temppwdsent;
+           setTimeout(() => {
+            this.eliModel.info = false;
+          }, 5000);
+        }
+      }, (error: any) => {
+          this.errorMethod(error);
+        }
+      );
+  }
+  
+  
+  
+    it('should call sendpassword', () => {
+    const accessManagementService = TestBed.get(AccessManagementService);
+    spyOn(accessManagementService, 'resendpasswordfunc').and.returnValue(
+      of('SUCCESS')
+    );
+    component.sendpassword('s1', 's2', 's3', 's4', 's5');
+  });
+  
+  
+  
+  
+  const commonServiceStub = {
+    getLabels: Observable.of({}, { mybusiness: 'value' }),
+    goToSkpToMainContent: () => ('mainskip'),
+    getholdings: () => ({
+      subscribe: () => ({})
+    })
+  };
+  
+  
+    it('should goToSkpToMainContent', () => {
+    const dashboardservice: any = TestBed.get(IasCommonService);
+    spyOn(dashboardservice, 'goToSkpToMainContent').and.returnValue(false);
+  });
+  
+  
+  function code
+  
+     public setDefaultValues(newEmail: string, oldEmail: string, mobilePhn: string): void {
+    if (oldEmail !== newEmail) {
+      this.emailAddr = newEmail;
+      this.configService.setEmailId(newEmail);
+      this.preferredNotificationMethod = newEmail;
+    }
+  }
+  
+  
+  Test cases
+  
+  config service
+  in mydetails
+    public setEmailId(): any {
+    //
+  }  
+  
+  
+  
+  in mock service above given
+  
+  it('call setDefaultValues', () => {
+    component.setDefaultValues('newe', 'olde', 'mph');
+    component.preferredNotificationMethod = 'email';
+  });
+  
+  
+  unit test cases recommendation session
+  
+  xdesc -> block
+  stub
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
