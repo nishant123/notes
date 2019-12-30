@@ -12,3 +12,9 @@ materials check
 difference between featured component and featured component
 recommendation for angular guidelines
 check bootstrap also
+usage of files check like tsconfig, main.ts and so on
+usage of zone.js
+child view and afterchildview
+ng content usage 
+
+
