@@ -105,8 +105,6 @@ The AfterContent sample explores the AfterContentInit() and AfterContentChecked(
 Content projection
 Content projection is a way to import HTML content from outside the component and insert that content into the component's template in a designated spot.
 
-Content projection
-Content projection is a way to import HTML content from outside the component and insert that content into the component's template in a designated spot.
 
 AngularJS developers know this technique as transclusion.
 
@@ -904,6 +902,8 @@ Called after the ngAfterContentInit() and every subsequent ngDoCheck().
 
 ngAfterViewInit()	
 Respond after Angular initializes the component's views and child views / the view that a directive is in.
+
+
 
 Called once after the first ngAfterContentChecked().
 
