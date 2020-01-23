@@ -16,5 +16,10 @@ usage of files check like tsconfig, main.ts and so on
 usage of zone.js
 child view and afterchildview
 ng content usage 
+main.ts
+angular.json
+tsconfig
+bootstrapping tell
+
 
 

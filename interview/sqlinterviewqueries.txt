@@ -1,0 +1,50 @@
+HCL Technologies is hiring for SQL Server Admin/Programmer skill for one of our biggest clients.
+
+
+
+Please find Job description below -
+
+Level - Deputy Manager/ Associate Manager
+
+Experience - 5-12 Years
+
+Work location - Gurgaon
+
+CTC - Negotiable 
+
+
+
+- As a Database Developer, you will have responsibility for working on a variety of projects primarily involved in database design, development, and maintenance for transactional processing systems/databases.
+
+
+
+Responsibilities:-
+
+
+- Write stored procedures, functions, etc. as dictated by the needs of each initiative/feature/user story, etc.
+- Develop ad-hoc SQL to research data questions, identify root causes, and interact closely with members of both IT and the business.
+- Performance tune queries and stored procedures to keep databases and applications optimized.
+- Collaborate with other developers, QA resources, business analysts, architects, and product owners to estimate and deliver work.
+- Leverage the latest tools, technologies, and design patterns to focus on database solutions.
+- Help reduce/minimize technical debt over time with root cause identification and resolution of system problems
+- Creating SQL server jobs to automate the data load process for report
+- Performance tuning of stored procedure and reports
+- Production Release Coordinator
+- Develop and maintain ETL procedures and programs.
+- Proficient with MS SQL Server language, platform, and environment
+- Proficient with SQL Tables, data types, stored procedures, and T-SQL
+- Proficient with Oracle database platforms and PL/SQL programming
+- Experience developing ETL workflows
+
+
+
+TECHNICAL SKILLS -
+
+Databases: SQL Server, Oracle 10g, DB2
+ETL: SSIS , Talend, Informatica
+BI:  Tableau, Power BI, SSRS  [ Good to have skill ]
+
+
+query
+
+evolutionary database design technique  

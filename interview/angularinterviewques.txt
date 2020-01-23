@@ -188,7 +188,7 @@ HttpClientModule –The HttpClientModule is imported from @angular/common/http a
 best practices for angular
 
 1. Use of Angular CLI
-Angular comes equipped with a command line interface called Angular CLI, which helps you scaffold your code in minutes.
+Angular comes equipped with a command line interface called Angular CLI, which helps you scaffold(burden) your code in minutes.
 Angular CLI can be installed easily via terminal by typing in the following command:
 npm install -g @angular/cli
 
@@ -262,6 +262,8 @@ import { environment } from '../../environment’;
 should be refactored into these:
 import { LoaderService } from '@app/loader/loader.service';
 import { environment } from '@env/environment’;
+
+
 
 
 performance in angular
