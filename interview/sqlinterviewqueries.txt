@@ -23,7 +23,7 @@ Responsibilities:-
 
 - Write stored procedures, functions, etc. as dictated by the needs of each initiative/feature/user story, etc.
 - Develop ad-hoc SQL to research data questions, identify root causes, and interact closely with members of both IT and the business.
-- Performance tune queries and stored procedures to keep databases and applications optimized.
+- Performance tune queries and stored 	procedures to keep databases and applications optimized.
 - Collaborate with other developers, QA resources, business analysts, architects, and product owners to estimate and deliver work.
 - Leverage the latest tools, technologies, and design patterns to focus on database solutions.
 - Help reduce/minimize technical debt over time with root cause identification and resolution of system problems
@@ -48,3 +48,8 @@ BI:  Tableau, Power BI, SSRS  [ Good to have skill ]
 query
 
 evolutionary database design technique  
+
+
+sql profiler
+architecture of database
+
