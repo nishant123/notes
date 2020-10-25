@@ -1,0 +1,127 @@
+1)      Explain what is Drupal?
+
+Drupal is a Content Management System (CMS).  It’s an open source content and free CMS framework written in PHP.  It enables you to organize, manage and publish content with ease and comes with a variety of customization option.
+
+2)      Why Drupal is considered powerful CMS compare to other CMS system?
+
+Using content construction kit Drupal allows you to create multiple content types without any programming skills. And for each content type it allows customize theme template. You can have an article, story, slideshow, content type and so on.
+
+3)      Mention what are the key features of Drupal?
+
+There are two key features of Drupal
+
+Upload Module: It enables users to attach different types of files to node types of your liking.
+Embedding: It enables to embed media within nodes that are hosted on your websites.
+4)      Explain how caching work in Drupal?
+
+Through caching Drupal allows to speed up website using different configuration like page caching, block caching and lifetime for cached pages.
+
+Page Caching:  It enables the entire HTML of each page to be stored in the database.  It reduces the amount of queries needed
+Block Caching:  You can set the cache setting for a block in views, when block created by views
+Minimum cache lifetime:  It is the amount of time before the page cache is cleared. On each cron run, page caches are cleared.
+Expiration of cached pages: It only applies for an external mechanism, for example, your browser cache or varnish
+
+5)      What is a patch?
+
+A patch is a file that contains a list of differences between one set of files, and another.  Through patches, all the changes in code like additions or deletions to Drupal core can be made. Also, patches can be used to make changes to another copy of the original or main file.
+
+6)      What do PDO mean?
+
+PDO means PHP Data Object; it is a lean and consistent way to access databases. It allows developers to write portable code with ease.
+
+7)      Explain how database system of Drupal works?
+
+In a database Drupal stores information, and each information has its own database table.  For example, the basic information regarding the nodes of your site are stored and kept in the node table, and if you use the CCK module to add fields to your nodes, the field information is stored in a separate table.
+
+8)      Name some of the most commonly used PHP based CMSs?
+
+Some of the commonly used PHP are
+
+Drupal
+Joomla
+WordPress
+TYPO3
+ 
+
+9)      What is DRUSH in Drupal?
+
+DRUSH is a command line shell and UNIX scripting interface for Drupal
+
+10)   Explain what is module in Drupal? List out some of the modules used in Drupal?
+
+Modules are like plugin for your site.  It allows you to add different functions to your site such as polls, contact forms and search fields.  Some of the modules recommended are
+
+Views
+Token
+Ctools
+Quicktabs
+Pathauto
+11)   Explain what Drupal distributions is and when to use?
+
+Distributions are full copies of Drupal, which includes Drupal Core, along with additional software as modules, themes, libraries and installation profiles. You can use distributions for
+
+Evaluating Drupal
+Demoing Drupal
+Learning Drupal
+Quickly binding Site
+12)   List out the SEO modules available in Drupal?
+
+Some of the SEO modules available in Drupal are
+
+Pathauto
+Meta tags/ Node words
+Service Links
+Google Analytics
+Related Links
+Search 404
+Site map
+Url list
+13)   Explain what is Drupal weight?
+
+The term Drupal weight is used to describe the priority or order in which the function is processed, or block/ node is displayed.
+
+A heavier (+10) weights will appear lower in lists while a lower weight (-10) will float to the top of lists.
+
+14)   Explain what is Drupal cron?
+
+To execute commands or scripts automatically at specified time and date intervals, you have to use Drupal cron.
+
+15)   Why Drupal needs database? What databases are supported?
+
+Drupal stores its information in the database like individual pages, registered users and so on.  For your Drupal site, database forms the back end; it supports MySQL /MariaDB, PostgreSQL and in Drupal 7, SQLite.
+
+16)   Explain what is render array in Drupal?
+
+For Drupal content render arrays are the basic building blocks.  In Drupal, render arrays provide you a structured way to programmatically change the content before it is displayed.
+
+17)   Explain what is the use of Ctools in Drupal?
+
+This suite is a set of APIs and tools, and it makes easier to handle AJAX requests and tell the client what to do with them.
+
+18)   What are the files required for theme and module?
+
+Drupal uses .info files to store metadata about themes and modules.
+
+The files required for
+
+Theme: style.css , page.tpl.php , template.php, block.tpl.php
+Module: modulename.info , modulename.module , optional modulename.install
+19)   Explain using module how you can drop the table?
+
+To drop the table you can use db_drop_table in install file.
+
+20)   What are the translations available in Drupal?
+
+Drupal is translated into all popular languages including
+
+Catalan
+French
+Hungarian
+Dutch
+21)   Does Drupal provides support?
+
+Like with all open-source projects there is no commercial support available. Though, there is a vast online community for Drupal available via Forums and IRC online chat who are more than eager to answer your queries.
+
+
+
+
