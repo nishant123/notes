@@ -1,3 +1,8 @@
+
+
+question: difference between d6 and d7
+
+
 1)      Explain what is Drupal?
 
 Drupal is a Content Management System (CMS).  It’s an open source content and free CMS framework written in PHP.  It enables you to organize, manage and publish content with ease and comes with a variety of customization option.
@@ -9,6 +14,7 @@ Using content construction kit Drupal allows you to create multiple content type
 3)      Mention what are the key features of Drupal?
 
 There are two key features of Drupal
+
 
 Upload Module: It enables users to attach different types of files to node types of your liking.
 Embedding: It enables to embed media within nodes that are hosted on your websites.
