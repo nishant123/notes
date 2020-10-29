@@ -129,5 +129,154 @@ Dutch
 Like with all open-source projects there is no commercial support available. Though, there is a vast online community for Drupal available via Forums and IRC online chat who are more than eager to answer your queries.
 
 
+Entity types
+In earlier versions of Drupal, the field system was only used on content types. Now, thanks to the Entity API, we can add fields to other things, like comments. Fieldable entities make Drupal eminently flexible. An entity type is a useful abstraction to group together fields. Below are the Entity types in Drupal core:
+
+Nodes (content)
+Comments
+Files
+Taxonomy terms
+Taxonomy vocabularies
+Users
+You can also build new kinds of entity types where the options above don't suit your needs. For more information, read further about using the hook_entity_info and extension by Entity API: entity_crud_hook_entity_info.
+
+Bundles
+Bundles are an implementation of an entity type to which fields can be attached. You can consider bundles as subtypes of an entity type. With content nodes (an entity type), for example, you can generate bundles (subtypes) like articles, blog posts, or products. Not all entity types have bundles, however. For example, users do not have separate bundles (subtypes). For the entity types that do allow bundles, you can create as many bundles (subtypes) as you want. Then, using the Field system, you can add different fields to each bundle. Examples include a file download field on Basic Pages and a subtitle field on Articles.
+
+Fields
+A field is a reusable piece of content. In technical terms, each field is a primitive data type, with custom validators and widgets for editing and formatters for display. You can read further for a developer's guide to using the Drupal 7 Fields API.
+
+
+Entity
+An entity would be one instance of a particular entity type such as a comment, taxonomy term or user profile or of a bundle such as a blog post, article or product.
+
+You can use entity_load to load any entity. Note, however, that the core does not provide a save or delete function, but thanks to Entity API module the missing pieces are added (entity_create(), entity_save(), entity_delete(), entity_view() and entity_access()).
+
+Putting this in Object-Oriented Design/Programming terms...
+If you come from an OOD/P background and are trying to better understand what these key D7 concepts are, the following suggested mapping might help (albeit not strictly true from a purist’s perspective) :
+
+
+An entity type is a base class
+A bundle is an extended class
+A field is a class member, property, variable or field instance (depending on your naming preference)
+An entity is an object or instance of a base or extended class
+
+
+Entity API module
+The project Entity API extends the entity API of Drupal core in order to provide a unified way to deal with entities and their properties. Additionally, it provides an entity CRUD controller, which helps in simplifying the creation of new entity types.
+
+
+Database tables are created using the Schema API .
+The Schema API allows modules to declare their database tables in a structured array (similar to the Form API) and provides API functions for creating, dropping, and changing tables, columns, keys, and indexes.
+
+$schema['node'] = array(
+    'description' => 'The base table for nodes.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The primary identifier for a node.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE),
+      'vid' => array(
+        'description' => 'The current {node_revisions}.vid version identifier.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0),
+      'type' => array(
+        'description' => 'The {node_type} of this node.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => ''),
+      'title' => array(
+        'description' => 'The title of this node, always treated a non-markup plain text.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => ''),
+      ),
+    'indexes' => array(
+      'node_changed'        => array('changed'),
+      'node_created'        => array('created'),
+      ),
+    'unique keys' => array(
+      'nid_vid' => array('nid', 'vid'),
+      'vid'     => array('vid')
+      ),
+    'primary key' => array('nid'),
+    );
+
+    Creating tables: hook_schema and .install files
+For the Schema API to manage a module's tables, the module must have a .install file that implements hook_schema(). For example, mymodule's mymodule.install file might contain:
+
+function mymodule_schema() {
+  $schema['mytable1'] = array(
+     // specification for mytable1
+  );
+  $schema['mytable2'] = array(
+     // specification for mytable2
+  );
+  return $schema;
+}
+
+Module updates using hook_update_N
+Updating your module, for example updating your schema, can be done using hook_update_N functions. The API page for this is at: function hook_update_N.
+
+Suppose you add a new column called 'newcol' to mytable1. First, be sure to update your schema structure in mymodule_schema() so that newly created tables get the new column. Then, add an update function to mymodule.install:
+
+function mymodule_update_1() {
+  $ret = array();
+  db_add_field($ret, 'mytable1', 'newcol', array('type' => 'int'));
+  return $ret;
+}
+
+
+Drupal hook described: hook_block_info()
+
+Modules are created to do all sorts of things: create blocks (abbreviated content that often appears on the right or left side of multiple pages), create special content types (for full page content - such as the content you are reading right now), track back-end information, and more. You may hear the term 'block modules' used to describe modules that primarily create block content (such as the menu module), or 'node modules' used to describe modules that primarily generate full page content (such as the blog and forum modules). At this stage, this module is a 'block module', because it generates a block.
+
+
+In Drupal 7, there are at least eight block hooks. For the purposes of this module, we will use two of them. The first is hook_block_info(). As you might suspect, this hook tells Drupal what block(s) your module creates. We will use this hook to define a block that will eventually display the most recent posts. You can use a given hook exactly once in any module, so this hook must declare all blocks the module needs. For this module, a single block is all we need.
+
+To use this hook to define our block, go to your current_posts.module file and create the function current_posts_block_info() as follows:
+
+/**
+ * Implements hook_block_info().
+ */
+function current_posts_block_info() {
+  $blocks['current_posts'] = array(
+    // The name that will appear in the block list.
+    'info' => t('Current posts'),
+    // Default setting.
+    'cache' => DRUPAL_CACHE_PER_ROLE,
+  );
+  return $blocks;
+}
+
+$blocks['example_empty'] = array(
+    'info' => t('Example: empty block'),
+    'status' => TRUE,
+    'region' => 'Content',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'node/*',
+);
+
+
+
+Difference Between Drupal 6 vs drupal 7
+1. Drupal 6 Vs Drupal 7 Difference and Features
+2. Overview Drupal 6 got released on feb - 2008. After 3 drupal 7 has been released with some amazing features. lets see about the difference and featured added over drupal 7 than drupal 6.
+3. ● Overlay Administrative Theme : Drupal 7 has the feature that admin UI will display on the overlay. Its very useful for the non- technical users. ● Entities : The major difference in drupal 7 they introduced “Entity” concept. like all in all it may generally refers to the node,user,taxonomy etc.
+4. ● The default theme for Drupal 7 is Bartik, Drupal 6 is Garland. ● While Theme developing in .info file “engine” required in drupal 6 whereas in 7 its optional. ● API Supports they are lot of improved hooks method in drupal 7. ● Improved support of WYSWYG editors.
+5. ● Improved Support for Multi Site Installations ● Search functionality has been improved in drupal 7 ● File and image handling has been improved ● Added the default core javascript libraries to the jquery Version. ● Improved node access control system
+6. ● Added RDF support ● Better support for search engine optimization and web linking ● Some of the essential modules has been included in core itself like cck. ● system requirement reduced.
+7. ● Performance : compare to drupal 6 performance has been fixed by the core itself. The page and response for query in core has been likely increased.
+8. ● Security : Drupal 7 has the strong security related items compared over drupal 6. Drupal login system and password saving on the DB is more secured. The DB query we have in drupal 7 gives you option to input only the safe data with filter options. Cron related functionalities has been added more than drupal 6. update manager has been introduced in drupal 7 to manage update things through web UI interface.
+9. ● Database structure and db queries - Getting the database result in terms of object and some other query syntax has changed in drupal 7. Database limitation has took off in drupal 7. Query builder added. we can perform multiple db queries at a time in drupal 7. Added support for SQLlite engine. default is innoDB
+10. Thank U Dhinakaran M
+
+
+
 
 
