@@ -1,0 +1,4 @@
+
+design patterns
+mvc 
+high level design and low level design and so on

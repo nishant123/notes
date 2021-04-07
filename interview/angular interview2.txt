@@ -1,0 +1,154 @@
+
+those services dependency injection
+
+to reduce bootstrap time modules are loaded only when they are required
+
+loadchildren
+ path of components
+
+module path and component path
+
+app.module.js
+app.routing 
+
+observable : are used to provide stream of values over time
+
+promises return one value
+
+promises are uncancellable
+
+by using unsubscribe
+
+observable are lazy
+promises are eager
+observable subscibe is needed
+observable has rich set of operators.
+in rxjs
+map: map is used to modify the data given by observable
+
+2 to b
+3 to c change
+
+where observable does not use
+
+async await 
+
+promise use async await
+
+observable 
+autocomplete case we use observable
+
+
+async pipe 
+
+pipes are used to modify the value
+
+pure pipe and impure pipe
+
+pure pipe no inner state
+
+impure pipe no same imput
+
+async pipe
+ 
+async direct values 
+
+async subscibe and unsubscribe automatically
+
+directives
+
+structural (dom modify), attribute(element behaviour), component(view screen)
+
+memory leaks
+if proper unsubscribe then can 
+
+flat map, join map, merge map
+
+flat , merge : inner and outer observable can be merged. 
+
+outer observable: a,b,c,d 
+flat map :will subscribe automatically a,b,c,
+flattening operator when there is case of nested observable then we use it to flatten the result
+
+a:1,2,3
+b:4,5,6
+
+flat map return 1,2,3 can be veried and so on
+
+switch map: a subscribe then b subscribe like autocomplete case
+
+concat map:first a subscribe then b subscribe and then c subscribe
+
+
+first operator: first value take and unsubscribe
+take operator: value define then unsubscribe do
+
+
+life cycle hook
+ngoninit initialize the value
+ngonchanges (change detection
+
+view child queries resolved
+
+
+abstract class: implementation detail definition not, some implementation can be , abstract method can be 
+interface not implementation
+only abstract 
+
+view encapsulation: shadow-down,none,emulated
+
+none: parent style can be taken, style can be leaked
+
+emulated parent leak not
+
+shadow down: parent se nahi lega and leak not
+
+
+comp b in comp a
+
+
+angular performance
+
+lazy loading
+memory leaking avoid
+best practice of angular
+
+set interval to clear interval
+subscribe to unsubscribe
+
+iv renderer : angular 9
+
+
+tree shaking
+
+the code which is not required will be removed from bundle
+
+ng build prod
+webpack mein
+
+angular view engine was not tree shakable. ivrenderer se angular view engine became tree shakable
+
+
+angular 11 features check
+
+interceptor
+layer make token add , response modify want to do
+
+singleton services
+whose one copy shared in the whole application
+
+route module provider mein service declare kar di hai
+
+singleton service having one object and broaden to all
+
+parent child not use then subject se 
+comp
+
+3 variations
+
+1 subject and behavioral
+subject: observable and observer at same time
+observable value emit and observer value consume
+
+behaviour subject: initial value can be assigned
+
