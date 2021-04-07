@@ -138,7 +138,7 @@ The following AfterContent hooks take action based on changing values in a conte
 
 AfterContentComponent (class excerpts)
 content_copy
-export class AfterContentComponent implements AfterContentChecked, AfterContentInit {
+ export class AfterContentComponent implements AfterContentChecked, AfterContentInit {
   private prevHero = '';
   comment = '';
 

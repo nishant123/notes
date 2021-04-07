@@ -1,3 +1,20 @@
+Skill Set : Drupal 8, twig, yml, less, theme hooks, Event subscribe, module hooks, coding standard. Oops Knowledge. Plugins, services,  service container, Angular/ReactJs
+
+Job description :
+
+Should have worked on at least two Drupal 8 projects
+
+Should have expertise on Drupal8 custom module/theme components
+
+Should have expertise  Drupal8 for the backend and Angular/ReactJs the front end latest technologies/Versions.
+
+Should have experience in content migration services
+
+ Should have experience in Integration with REST APIs
+
+ Should have experience in AWS S3 services
+
+
 
 
 question: difference between d6 and d7
