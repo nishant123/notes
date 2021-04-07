@@ -1,0 +1,16 @@
+﻿.txtsmall
+{
+width:25%;
+}
+.txtmedium
+{
+    width: 50%;
+}
+.txtclsbackground
+{
+background-color:lightyellow;
+}
+.txtclsbackgroundorange
+{
+    background-color: orange;
+}
