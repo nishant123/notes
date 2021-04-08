@@ -152,3 +152,130 @@ observable value emit and observer value consume
 
 behaviour subject: initial value can be assigned
 
+
+
+Design patterns are great problem solving templates that developers can apply to their projects. There are way too many patterns to cover in a single article though and they tend to attack different needs. However, they can losely be categorized into three different groups, you have:
+Your structural patterns, they deal with structuring the relationship between different components (or classes) and forming new structures in order to provide new functionalities. Examples of structural patterns are Composite, Adapter and Decorator.
+Your behavioral patterns, they help abstract common behavior between components into a separate entity which in turn, and your creational patterns. Examples of behavioral patterns are Command, Strategy, and one of my personal favorites: the Observer pattern.
+Your creational patterns, they focus on class instantiation and making your life easier in order to create new entities. I’m talking about Factory method, Singleton and Abstract Factory.
+
+
+Singleton
+The singleton pattern is probably one of the most known design patterns out there. It is a creational pattern because it ensures that no matter how many times you try to instantiate a class, you’ll only have one instance available.
+This is a great pattern to handle things such as database connections, since you’ll probably want to only handle one at a time, instead of having to re-connect on every user request.
+
+class MyDBConn{
+
+    protected static instance: MyDBConn | null = null
+    private id: number = 0
+
+    constructor() {
+        //... db connection logic
+        this.id = Math.random() //the ID could represent the actual connection to the db
+    }
+    
+    public getID(): number {
+        return this.id
+    }
+
+    public static getInstance(): MyDBConn {
+        if(!MyDBConn.instance) {
+            MyDBConn.instance = new MyDBConn()
+        }
+        return MyDBConn.instance
+    }
+}
+
+
+const connections = [
+                        MyDBConn.getInstance(),
+                        MyDBConn.getInstance(),
+                        MyDBConn.getInstance(),
+                        MyDBConn.getInstance(),
+                        MyDBConn.getInstance()
+                ]
+
+connections.forEach( c => {
+    console.log(c.getID())
+})
+
+Factory method
+As I’ve already mentioned, the Factory Method pattern is a creational pattern, just like Singleton. However, instead of directly working on top of the object we care about, this pattern only takes care of managing its creation.
+Let me explain: imagine you have to write code that will move vehicles, they are very different types of vehicles (i.e a car, a bicycle and a plane), the movement code should be encapsulated inside each vehicle class, but the code that calls their move method can be generic.
+
+interface Vehicle {
+    move(): void
+}
+
+//The classes we care about, the "move" method is where our "business logic" would live
+class Car implements Vehicle {
+
+    public move(): void {
+        console.log("Moving the car!")
+    }
+}
+
+class Bicycle implements Vehicle {
+
+    public move(): void {
+        console.log("Moving the bicycle!")
+    }
+}
+
+class Plane implements Vehicle {
+
+    public move(): void {
+        console.log("Flying the plane!")
+    }
+}
+
+//The VehicleHandler is "abstract" because noone is going to instantiate it
+//We want to extend it and implement the abstract method
+abstract class VehicleHandler {
+
+    //This is the method real handlers need to implement
+    public abstract createVehicle(): Vehicle 
+
+    //This is the method we care about, the rest of the business logic resides here
+    public moveVehicle(): void {
+        const myVehicle = this.createVehicle()
+        myVehicle.move()
+    }
+} 
+
+//Here is where we implement the custom object creation
+class PlaneHandler extends VehicleHandler{
+
+    public createVehicle(): Vehicle {
+        return new Plane()
+    }
+}
+
+class CarHandler  extends VehicleHandler{
+
+    public createVehicle(): Vehicle {
+        return new Car()
+    }
+}
+
+class BicycleHandler  extends VehicleHandler{
+
+    public createVehicle(): Vehicle {
+        return new Bicycle()
+    }
+}
+
+/// User code...
+const planes = new PlaneHandler()
+const cars = new CarHandler()
+
+planes.moveVehicle()
+cars.moveVehicle()
+
+
+https://blog.bitsrc.io/design-patterns-in-typescript-e9f84de40449
+
+The point is, with the Observer pattern you can implement them and more.
+And how does it work? Essentially the pattern states that you have a set of observer objects, which will react to changes in the state of the observed entity. In order for this to happen, once a change is received at the observed end, it is responsible for notifying its observers by calling one of its methods.
+
+
