@@ -1,0 +1,329 @@
+Question: Enumerate some of the most important new features in HTML5.
+Answer: Some of the best new features brought by the HTML5 specification are:
+
+Better error handling
+Enhanced support for embedding audio, graphics, and video content via <audio>, <canvas>, and <video> tags
+Extensions for the JavaScript API, such as for caching, drag-and-drop, geolocation, and storage
+More markup for replacing scripting
+Multi-device support
+
+Question: What do you understand by web workers?
+Answer: The addition of web workers brings multithreading capability to JavaScript. These are scripts running in the background that doesn't necessitate the web page to wait for their completion.
+
+Hence, a user can interact freely with the web page while a web worker runs in the background. In order to achieve parallelism, web workers leverage thread-like message passing.
+
+Question: Explain the <figure> tag in HTML5.
+Answer: The <figure> tag is used for specifying self-contained content, such as diagrams and photos, in an HTML5 web page. Although the content of the figure element is related to the main flow of the document, its position is independent of the same, i.e., if removed, it will not affect the main flow of the document.
+
+Question:Explain the various new tags introduced by HTML5 in Media Elements.
+Answer: HTML5 introduces the following five new tags in Media Elements:
+
+<audio>: Eliminates the need for additional plugins for playing audio content like audio streams and music.
+<embed>: Embeds an external application or content
+<source>: Adds multimedia resources like audio, picture, and video.
+<track>: Adds caption files or subtitles while the multimedia file is playing.
+<video>: Adds video content like embedded video content, movie clips, and videos.
+Question:What is a <meta> tag in HTML5?
+Answer: The <meta> tag offers metadata about the HTML5 document. This metadata is machine-parsable. Typically, meta elements are used for specifying:
+
+Author name
+Keywords
+Page description
+
+
+Question:Which tag is used for representing the result of a calculation? Explain its attributes.
+Answer: The <output> tag is used for representing the result of a calculation. It has three attributes:
+
+for - Represents the relationship among the elements used in the calculation and the result.
+form - Represents the form(s) the output element belongs to.
+name - Represents a name for the output element.
+
+Question:List all the tags removed from the HTML5.
+Answer: Following tags were removed in the HTML5:
+
+<acronym>
+<applet>
+<basefont>
+<big>
+<bigcenter>
+<center>
+<dir>
+<frame>
+<frameset>
+<font>
+<noframes>
+<strike>
+
+Question:Please explain how to indicate the character set being used by a document in HTML5?
+Answer: The character set being used by an HTML5 document is indicated using the charset attribute of a <meta> tag inside the <head> element of the HTML5 document:
+
+<!DOCTYPE html>
+<html>
+<head>
+…
+...
+<meta charset="UTF-8">
+
+Question: Is it possible for a web page to have multiple <header> and <footer> elements?
+Answer: Yes, a webpage can have many <header> and <footer> elements. Both tags are specifically designed to serve their respective purposes with respect to their parent section.
+
+Question:Please explain whether an <article> element can have <section> elements and vice-versa.
+Answer: Yes, an <article> element can have <section> element(s) and a <section> element can also have <article> elements. For example, a user panel for a website can have multiple <section> elements, intended for blog, analytics, payment options, news, et cetera.
+
+Question:Explain the difference between Canvas and SVG elements.
+Answer:Following are the various differences between <canvas> and <svg> elements:
+
+1. API Animation
+
+Canvas has no provision for API animation. SVG, on the contrary, is capable of API animation.
+
+2. Change Accommodation
+
+Each drawn shape in SVG is remembered as an object by the web browser. If the attributes pertaining to an SVG object are changed, the browser automatically re-renders the shape.
+
+
+3. Definition
+
+SVG stands for Scalable Vector Graphics. It features many methods for drawing bitmap images, boxes, circles, paths, and text.
+
+4. Dependency
+
+SVG doesn't depend on the resolution, while Canvas completely depends on the same.
+
+6. Ideal for
+
+While Canvas is suitable for small rendering areas and games graphics, SVG is the best option for large rendering areas and printing with high-quality at any resolution
+
+Question:What do you understand by <!DOCTYPE>? Name the types of DOCTYPE available in HTML5.
+Answer:Every HTML5 web page starts with the <!DOCTYPE> declaration. It lets the web browser understand the information that it must display. The DOCTYPE declaration is concise and case-insensitive in HTML5. HTML5 provides support for only one DOCTYPE:
+
+<!DOCTYPE html>
+
+Question: What will happen if the doctype is not specified in an HTML web page?
+Answer:If the doctype is not specified in an HTML web page, then the web browser will be unable to interpret the new HTML5-specific tags.
+
+Question: List the various techniques for optimizing website assets.
+Answer: To optimize website assets, one needs to decrease:
+
+The download size, and
+The total number of HTTP requests that are made
+Following techniques can be used for optimizing website assets:
+
+CDN hosting
+File compression
+File concatenation
+Offloading assets
+Re-organizing
+Refining code
+
+
+Question:Please explain the Geolocation API in HTML5. How will you create a Geolocation object?
+Answer: The Geolocation API in HTML5 allows users to share their location with selected websites. J.S. is capable of capturing a user's latitude and longitude and sending the same to the backend server.
+
+Doing so enables location-aware features like finding local places of interest and finding out one's location on the map. 
+
+
+Question: Explain the difference between div and span.
+Answer: Both div and span are used for giving out the output. While span gives the output with display: inline, div gives output with display: block. Typically, span is used when there is the need to display the elements one after the other, i.e., in a line.
+
+Question: What do you understand by HTML5 Web Storage? Is it any better than Cookies?
+Answer: Prior to HTML5, web pages were able to store data locally within a browser using cookies. The HTML5 introduces Web Storage that allows a webpage to do the same as that of the cookies. Web Storage, however, is faster and more secure than cookies.
+
+The HTML5 Web Storage is faster because the data isn't included with every server request. Instead, it is used when asked for. A web page can only access the data stored by itself, which is stored in name/value pairs
+
+Another important distinction between the HTML5 Web Storage and Cookies is that:
+
+Web Storage never transfers the data to the server, and
+When compared to cookies, the storage limit for the HTML5 Web Storage is much larger, at least 5MB, and at max 10MB.
+
+
+Question: Please explain localStorage and sessionStorage.
+Answer: Both localStorage and sessionStorage are scoped to the document origin. This ensures that documents with different origins never share stored objects. Unlike localStorage, sessionStorage is also scoped on a per-window basis.
+
+If, for example, two browser tabs are displaying documents from the same origin, both will have separate sessionStorage data, i.e., the scripts running in one browser tab can't read or overwrite the data written by scripts in the other. This is true even if both browser tabs are visiting the totally same page and are running the absolutely same scripts.
+
+The difference between the localStorage and the sessionStorage lies on the basis of the lifetime and the scope. Data stored via localStorage is permanent, i.e., it doesn't expire and remains stored on a computer until:
+
+A web app deletes it, or
+The user requests the browser to delete it
+Data stored via sessionStorage, on the other hand, gets deleted when the window or tab concerning the same is closed. sessionStorage has the same lifetime as that of the top-level window or browser tab that has the script running, which stored the data.
+
+
+Question: Why do you think the addition of drag-and-drop functionality in HTML5 is important? How will you make an image draggable in HTML5?
+Answer: When it comes to UI interaction, the drag-and-drop is essential functionality. Almost all modern U.I.s have it. It makes copying, moving, and linking an object, such as an image or a link, very easy.
+
+To make an image draggable in HTML5, we need to set the draggable image attribute true i.e.:
+
+type = <img draggable = "true">
+
+
+Question: Please explain the new form input types in HTML5.
+Answer: The HTML5 introduces the following 14 new form input types:
+
+Color - Select multiple colors using type = "color"
+Date - Pick a date by using type = "date."
+Datetime - Combination of date and time. Pick a date and time by using type = "datetime"
+Datetime-local - Doesn't include the timezone. Pick a date and time by using type = "datetime-local."
+Email - Enter one or more email addresses using type = "email."
+Month - Pick a month by using type = "month."
+Number - Inserts a numerical value with additional attributes like min and max. Enter one or many numerical values using type = "number."
+Search - Allows searching queries by inputting text. Enter one or many search queries by using type = "search."
+Tel - Allows different phone numbers. Each phone number is validated by the client-side. Enter a phone number by using type = "tel."
+Placeholder - Displays a short hint in the input fields before entering a value. Write a short hint in the input field using type = "placeholder."
+Range - Inserts a numerical value within a specific range. Enter a numerical value within a range using type = "range."
+Time - Pick a time by using type = "time."
+Url - URL input type used for the web address. Use one or more attributes using type = "url"
+Week - Pick a week by using type = "week."
+
+
+Question: What do you understand by image maps in HTML5? How many types does it have?
+Answer: Image maps allow users to click on images for opening new web pages. As such, these are a combination of images and URLs. Image maps are of two types:
+
+Client-side Image Map - Created using <area> and <map> elements. The map element holds the map information, and the area element takes the attributes for defining each section of the map.
+Server-side Image Map - Created using the <usemap> attribute, which is the name of the map.
+
+
+Question: Why do we need the MathML element in HTML5?
+Answer: MathML stands for Mathematical Markup Language. It is a form of XML for describing the Math notation. MathML is a markup language for displaying mathematical and scientific expressions over web pages.
+
+For implementing the MathML element i.e. displaying a mathematical equation, we put it inside the <math> and </math> tags.
+
+Question: Please explain Microdata in HTML5.
+Answer: Microdata is a new simple semantic syntax used for new global attributes in HTML5. It adds the nested groups of name and value pairs to documents mostly based on the web page content.
+
+
+Question: What are the most popular audio and video formats for embedding on an HTML5 web page?
+Answer: Popular audio formats:
+
+MP3
+Ogg Vorbis
+WAV
+WebM
+Popular video formats:
+
+MP4
+Ogg
+
+Question: What are the various common lists for designing a web page in HTML5.
+Answer:Following are the common lists for designing a web page:
+
+<dl> - Definition list
+<dir> - Directory list
+<menu> - Menu list
+<ol> - Ordered list
+<ul> - Unordered list
+
+
+Question: How will you add the autocomplete feature in a textbox?
+Answer:For an <input> element, the <datalist> tag specifies a list of predefined options. It can be used for adding the autocomplete feature to a textbox. As a user inputs data, a dropdown list of available options will appear.
+
+
+Question: Briefly explain various page structure elements in HTML5.
+Answer: Following are the various page structure elements available in HTML5:
+
+<article> - Represents a set of information on a web page
+<aside> - Represents the sidebar of a web page
+<footer> - Represents the footer section of a web page
+<header> - Represents the header section of a web page
+<nav> - Represents the navigational elements of a web page
+<section> - Represents the set of instructions used inside an article block for defining the basic structure of a web page
+
+
+Question: Write HTML5 code to embed a video in a web page.
+Answer:
+
+<!DOCTYPEhtml>
+<html>
+<body>
+<title> Video Embedding Example </title>
+<video width = "640" height = "360" controls>
+<source src = "videofile.mp4" type = "video/mp4>
+</video>
+</body>
+</html>
+
+
+Question: Show a copyright symbol on a web browser page.
+Answer: We can add a copyright symbol by adding the HTML code (&#169;), hex code (&#xa9;), Unicode (U+000A9), or css code (\00A9). For example,
+
+
+Question: Explain the Advantage and Disadvantages of using HTML5.
+Answer: Some advantages of HTML5 are:
+
+Better semantics and cleaner code.
+Consistency in coding a web page.
+Elegant and fancier forms reduced need for JavaScript.
+Geolocation support.
+Many new features that make animations and front-end elements easier to code and display on different browsers.
+Offline application cache which helps users to view a page even when they are not connected to the internet.
+Some disadvantages of HTML5 are:
+
+Only modern versions of the browsers support HTML5. Not all users use the latest version of browsers.
+Many features are still not stable and are in the development stage.
+Due to licensing issues, the rich media is compressed into multiple formats to be compatible with most browsers.
+
+
+Question: What are the useful API in HTML5?
+Answer: Some of the useful APIs in HTML5 are:
+
+Fetch: Fetch has made Http requests easier than it was with XMLHttpRequest.
+Battery status: checks the battery status of the device.
+Geolocation: tells the device location.
+Clipboard: copy the contents to the clipboard.
+Forms: new types have been added for validation and rendering.
+Drag and drop: easily drag and drop items in the app.
+Screen orientation: Checks the device’s screen orientation.
+Web audio: Process audio on the client-side.
+Internalization: International formatting and string comparison.
+Web sockets: real-time communication between server and client.
+
+
+Question: Is HTML5 backward compatible with old browsers?
+Answer: No, old browsers can support some basic features, but the video and audio support, semantics, etc. are not backward compatible. Although, we can make the older browsers learn how to handle the unknown elements.
+
+Question: What is the use of DateTime-local input control in Web form 2.0?
+
+Answer: It indicates date and time (year, month, day, hour, minute, second, a fraction of a second) encoded as per ISO 8601 without timezone information.
+
+
+Question: What is the use of URL input control in Web form 2.0?
+Answer: This control accepts only URL value and is used for input fields that need a URL address. It will not accept any other values like text input. The accepted formats are: http://www.<webaddr> or http://<webaddr>
+
+Question: What are the drawbacks of cookies?
+Answer: The most important drawback is privacy as cookies keep track of all the websites a user visits, and any third-party can access the cookies' information. This could be misused by hackers or malicious persons to access confidential information like passwords or credit card details.
+
+Question: What is the server-sent events in HTML5?
+Answer: The events that flow from the webserver to the browsers are called server-sent events. DOM events can be continuously pushed from the webserver to the browser of a user. To use a server-sent event (SSE), you should add an <eventsource> element to the document. The src attribute of this element describes the HTTP connection location, which sends a data stream having the events.
+
+Example: <eventsource src = "/cgi-bin/myfile.cgi" />
+
+
+Question: How to utilize a server-sent event in HTML5?
+Answer: Server-sent events are most useful when we need long-term connection with the webserver. In such cases, the web page can hold an open connection to a web server, and the server can send a response anytime without having to reconnect.
+
+Question: What are web sockets?
+Answer: Web sockets are API or protocols that define persistent socket connections between the web browser and the server. A WebSocket connection can be opened by calling the Websocket constructor and passing the URL in the URL schema. URL schema can be ws, wss. Optionally, other subprotocols like soap, XMPP, etc. can be passed to the constructor. Websockets help in two-way communication and handle proxies and firewalls.
+
+
+Question:Briefly explain some of the most-used APIs in HTML5.
+Answer: Following are the most-used APIs in HTML5:
+
+Canvas API - Enables drawing graphics via J.S. and the <canvas> element.
+Console API - Allows developers to perform various debugging tasks.
+Constraint Validation API - Helps in checking (validating) user-entered values into form controls prior to submitting these values to the server.
+Credential Management API - Enables a website to store and retrieve federated, public, and user key credentials. In other words, it allows users to sign in without entering passwords.
+Drag and Drop API - Allows grabbing and dragging an HTML object with the cursor.
+Geolocation API - Enables users to share their location details with web applications.
+History API - Grants access to the browser navigation history.
+Media API - A JavaScript API that allows interacting with the audio and video elements. Provides the HTMLMediaElement programming interface.
+Service Worker API - Allows:
+Access to push background sync APIs and push notifications.
+Creating effectual offline experiences
+Intercepting network requests and take relevant actions thereof
+Updating assets residing on the server
+WebVTT API - WebVTT stands for Web Video Text Tracks Format. Provides access to the various text tracks available for an HTML5 video using the <track> element.
+Web Storage API - Provides a faster and better mechanism to allows browsers to store key/value pairs.
+
+
+
+
