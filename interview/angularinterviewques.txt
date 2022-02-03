@@ -1826,6 +1826,549 @@ Lighthouse testing is another great way to see how you application performs on a
 
 
 
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution.
+
+Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
+
+Of note however, is the fact that the hoisting mechanism only moves the declaration. The assignments are left in place.
+
+If you’ve ever wondered why you were able to call functions before you wrote them in your code, then read on!
+
+However, in contrast, undeclared variables do not exist until code assigning them is executed.
+Therefore, assigning a value to an undeclared variable implicitly creates it as a global variable when the assignment is executed. This means that, all undeclared variables are global variables.
+
+function hoist() {
+  a = 20;
+  var b = 100;
+}
+
+hoist();
+
+console.log(a);
+/*
+Accessible as a global variable outside hoist() function
+Output: 20
+*/
+
+console.log(b);
+/*
+Since it was declared, it is confined to the hoist() function scope.
+We can't print it out outside the confines of the hoist() function.
+Output: ReferenceError: b is not defined
+*/
+
+
+The apply() method is an important method of the function prototype and is used to call other functions with a provided this keyword value and arguments provided in the form of array or an array like object.
+
+But what if we want the elements to be pushed individually instead as an array? Sure there are literally n number of ways to do so, but as we are learning apply, let’s use it:
+
+In the given example we can see the use of apply in joining two given arrays. The arguments array is the elements array and the this argument points to the array variable. 
+
+The call() method is used to call a function with a given this and arguments provided to it individually.
+
+This is very similar to apply, the only difference being that apply takes arguments in the form of an array or array-like objects, and here the arguments are provided individually.
+
+https://www.freecodecamp.org/news/how-to-use-the-apply-call-and-bind-methods-in-javascript-80a8e6096a90/
+
+
+those services dependency injection
+
+to reduce bootstrap time modules are loaded only when they are required
+
+loadchildren
+ path of components
+
+module path and component path
+
+app.module.js
+app.routing 
+
+observable : are used to provide stream of values over time
+
+promises return one value
+
+promises are uncancellable
+
+by using unsubscribe
+
+observable are lazy
+promises are eager
+observable subscibe is needed
+observable has rich set of operators.
+in rxjs
+map: map is used to modify the data given by observable
+
+2 to b
+3 to c change
+
+where observable does not use
+
+async await 
+
+promise use async await
+
+observable 
+autocomplete case we use observable
+
+
+async pipe 
+
+pipes are used to modify the value
+
+pure pipe and impure pipe
+
+pure pipe no inner state
+
+impure pipe no same imput
+
+async pipe
+ 
+async direct values 
+
+async subscibe and unsubscribe automatically
+
+directives
+
+structural (dom modify), attribute(element behaviour), component(view screen)
+
+memory leaks
+if proper unsubscribe then can 
+
+flat map, join map, merge map
+
+flat , merge : inner and outer observable can be merged. 
+
+outer observable: a,b,c,d 
+flat map :will subscribe automatically a,b,c,
+flattening operator when there is case of nested observable then we use it to flatten the result
+
+a:1,2,3
+b:4,5,6
+
+flat map return 1,2,3 can be veried and so on
+
+switch map: a subscribe then b subscribe like autocomplete case
+
+concat map:first a subscribe then b subscribe and then c subscribe
+
+
+first operator: first value take and unsubscribe
+take operator: value define then unsubscribe do
+
+
+life cycle hook
+ngoninit initialize the value
+ngonchanges (change detection
+
+view child queries resolved
+
+
+abstract class: implementation detail definition not, some implementation can be , abstract method can be 
+interface not implementation
+only abstract 
+
+view encapsulation: shadow-down,none,emulated
+
+none: parent style can be taken, style can be leaked
+
+emulated parent leak not
+
+shadow down: parent se nahi lega and leak not
+
+
+comp b in comp a
+
+
+angular performance
+
+lazy loading
+memory leaking avoid
+best practice of angular
+
+set interval to clear interval
+subscribe to unsubscribe
+
+iv renderer : angular 9
+
+
+tree shaking
+
+the code which is not required will be removed from bundle
+
+ng build prod
+webpack mein
+
+angular view engine was not tree shakable. ivrenderer se angular view engine became tree shakable
+
+
+angular 11 features check
+
+interceptor
+layer make token add , response modify want to do
+
+singleton services
+whose one copy shared in the whole application
+
+route module provider mein service declare kar di hai
+
+singleton service having one object and broaden to all
+
+parent child not use then subject se 
+comp
+
+3 variations
+
+1 subject and behavioral
+subject: observable and observer at same time
+observable value emit and observer value consume
+
+behaviour subject: initial value can be assigned
+
+The Promise.all() method takes an iterable of promises as an input, and returns a single Promise that resolves to an array of the results of the input promises. This returned promise will resolve when all of the input's promises have resolved, or if the input iterable contains no promises. It rejects immediately upon any of the input promises rejecting or non-promises throwing an error, and will reject with this first rejection message / error.
+
+
+Since the first, returns an array, we can wait for it to resolve and iterate over the array and run the other two promises subsequently i.e for each array item, we wait for the getProductId promise to be resolved then call the capitalizeId promise as follows:
+
+const capitalizeProductsIds = async () => {
+  const products = await getProducts()
+
+  for (let product of products) {
+    const productId = await getProductId(product);
+    console.log(productId);
+
+    const capitalizedId = await capitalizeId(productId);
+    console.log(capitalizedId);
+  }
+
+  console.log(products);
+}
+
+capitalizeProductsIds()
+Combining the async/await syntax with the for..of loop will give us the following output
+
+
+product1
+PRODUCT1
+
+product2
+PRODUCT2
+
+product3
+PRODUCT3
+
+product4
+PRODUCT4
+
+(4) [{…}, {…}, {…}, {…}]
+That's not the behavior that we are really looking to implement but instead we want to execute the first promise and wait for it to complete, then the second promise and finally the third promise when the second is fully completed.
+
+
+Combining And Resolving all Promises with Promise.all(), map() and Async/Await
+So instead of using the for loop with the async/await syntax, we need to use the Promise.all() and map() methods with async/await as follows:
+
+const capitalizeProductsIds = async () => {
+  const products = await getProducts()
+
+  Promise.all(
+    products.map(async (product) => {
+      const productId = await getProductId(product);
+      console.log(productId);
+
+      const capitalizedId = await capitalizeId(productId)
+      console.log(capitalizedId);
+    })
+  )
+
+  console.log(products);
+}
+capitalizeProductsIds();
+This is the output:
+
+(4) [{…}, {…}, {…}, {…}]
+
+product1
+product2
+product3
+product4
+
+PRODUCT1
+PRODUCT2
+PRODUCT3
+PRODUCT4
+
+
+The Promise.all() method takes an iterable of promises as an input, and returns a single Promise that resolves to an array of the results of the input promises. This returned promise will resolve when all of the input's promises have resolved, or if the input iterable contains no promises. It rejects immediately upon any of the input promises rejecting or non-promises throwing an error, and will reject with this first rejection message / error.
+
+
+Event bubbling allows a single handler on a parent element to listen to events fired by any of its children.
+
+Angular supports bubbling of DOM events and does not support bubbling of custom events.
+Mixing the names of custom and DOM events (click, change, select, submit) could be problematic. Use stopPropagation to avoid double event handler invocation. Prefer naming custom events after their intent and not cause.
+
+<!-- custom event clashes with DOM event -->
+<product-form (submit)="onSubmit($event)"></product-form>
+<!-- custom event shows its intent and does not clash -->
+<product-form (save)="onSaveProduct($event)"></product-form>
+
+A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The lifecycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed.
+
+ngOnChanges()	
+
+Respond when Angular sets or resets data-bound input properties. The method receives a SimpleChanges object of current and previous property values.
+
+Called before ngOnInit() (if the component has bound inputs) and whenever one or more data-bound input properties change.
+
+ngOnInit()
+
+Initialize the directive or component after Angular first displays the data-bound properties and sets the directive or component's input properties
+Called once, after the first ngOnChanges(). ngOnInit() is still called even when ngOnChanges() is not (which is the case when there are no template-bound inputs).
+
+ngDoCheck()
+
+Detect and act upon changes that Angular can't or won't detect on its own. See details and example in Defining custom change detection in this document.
+
+Called immediately after ngOnChanges() on every change detection run, and immediately after ngOnInit() on the first run
+
+ngAfterContentInit()
+
+Respond after Angular projects external content into the component's view, or into the view that a directive is in.
+
+Called once after the first ngDoCheck().
+
+ngAfterContentChecked()
+
+Respond after Angular checks the content projected into the directive or component.
+
+Called after ngAfterContentInit() and every subsequent ngDoCheck()
+
+ngAfterViewInit()
+
+Respond after Angular initializes the component's views and child views, or the view that contains the directive.
+
+Called once after the first ngAfterContentChecked()
+
+ngAfterViewChecked()
+
+Respond after Angular checks the component's views and child views, or the view that contains the directive.
+
+Called after the ngAfterViewInit() and every subsequent ngAfterContentChecked()
+
+ngOnDestroy()
+
+	
+Cleanup just before Angular destroys the directive or component. Unsubscribe Observables and detach event handlers to avoid memory leaks. 
+
+Called immediately before Angular destroys the directive or component.
+
+https://angular.io/guide/lifecycle-hooks
+
+ViewChild
+Property decorator that configures a view query. The change detector looks for the first element or the directive matching the selector in the view DOM. If the view DOM changes, and a new child matches the selector, the property is updated.
+
+View queries are set before the ngAfterViewInit callback is called.
+
+Decorators are a design pattern that is used to separate modification or decoration of a class without modifying the original source code. In AngularJS, decorators are functions that allow a service, directive or filter to be modified prior to its usage.
+
+
+A common pattern in Angular is sharing data between a parent component and one or more child components. Implement this pattern with the @Input() and @Output() decorators.
+
+Sending data to a child component
+The @Input() decorator in a child component or directive signifies that the property can receive its value from its parent component.
+  @Input() item = '';
+
+<p>
+  Today's item: {{item}}
+</p>
+<app-item-detail [item]="currentItem"></app-item-detail>
+
+src/app/app.component.ts
+content_copy
+export class AppComponent {
+  currentItem = 'Television';
+}
+
+
+Sending data to a parent component
+The @Output() decorator in a child component or directive lets data flow from the child to the parent.
+
+
+
+Configuring the child component
+The following example features an <input> where a user can enter a value and click a <button> that raises an event. The EventEmitter then relays the data to the parent component.
+
+Import Output and EventEmitter in the child component class:
+
+Import Output and EventEmitter in the child component class:
+
+content_copy
+import { Output, EventEmitter } from '@angular/core';
+In the component class, decorate a property with @Output(). The following example newItemEvent @Output() has a type of EventEmitter, which means it's an event.
+
+src/app/item-output/item-output.component.ts
+content_copy
+@Output() newItemEvent = new EventEmitter<string>();
+The different parts of the preceding declaration are as follows:
+
+@Output()—a decorator function marking the property as a way for data to go from the child to the parent
+newItemEvent—the name of the @Output()
+EventEmitter<string>—the @Output()'s type
+new EventEmitter<string>()—tells Angular to create a new event emitter and that the data it emits is of type string.
+For more information on EventEmitter, see the EventEmitter API documentation.
+
+Create an addNewItem() method in the same component class:
+
+src/app/item-output/item-output.component.ts
+content_copy
+export class ItemOutputComponent {
+
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
+}
+The addNewItem() function uses the @Output(), newItemEvent, to raise an event with the value the user types into the <input>.
+
+
+design patterns
+
+Your structural patterns, they deal with structuring the relationship between different components (or classes) and forming new structures in order to provide new functionalities. Examples of structural patterns are Composite, Adapter and Decorator.
+Your behavioral patterns, they help abstract common behavior between components into a separate entity which in turn, and your creational patterns. Examples of behavioral patterns are Command, Strategy, and one of my personal favorites: the Observer pattern.
+Your creational patterns, they focus on class instantiation and making your life easier in order to create new entities. I’m talking about Factory method, Singleton and Abstract Factory.
+
+
+Singleton
+The singleton pattern is probably one of the most known design patterns out there. It is a creational pattern because it ensures that no matter how many times you try to instantiate a class, you’ll only have one instance available.
+This is a great pattern to handle things such as database connections, since you’ll probably want to only handle one at a time, instead of having to re-connect on every user request.
+
+class MyDBConn{
+
+    protected static instance: MyDBConn | null = null
+    private id: number = 0
+
+    constructor() {
+        //... db connection logic
+        this.id = Math.random() //the ID could represent the actual connection to the db
+    }
+    
+    public getID(): number {
+        return this.id
+    }
+
+    public static getInstance(): MyDBConn {
+        if(!MyDBConn.instance) {
+            MyDBConn.instance = new MyDBConn()
+        }
+        return MyDBConn.instance
+    }
+}
+
+
+const connections = [
+                        MyDBConn.getInstance(),
+                        MyDBConn.getInstance(),
+                        MyDBConn.getInstance(),
+                        MyDBConn.getInstance(),
+                        MyDBConn.getInstance()
+                ]
+
+connections.forEach( c => {
+    console.log(c.getID())
+})
+
+Factory method
+As I’ve already mentioned, the Factory Method pattern is a creational pattern, just like Singleton. However, instead of directly working on top of the object we care about, this pattern only takes care of managing its creation.
+Let me explain: imagine you have to write code that will move vehicles, they are very different types of vehicles (i.e a car, a bicycle and a plane), the movement code should be encapsulated inside each vehicle class, but the code that calls their move method can be generic.
+The question here is how are you going to handle the object creation? You could have a single creator class with 3 methods, or one method that receives a parameter. In either case, extending this logic in order to support the creationg of more vehices requires you to keep growing the same class.
+However, if you decided to use the factory method pattern, you could do something like below:
+
+
+https://blog.bitsrc.io/design-patterns-in-typescript-e9f84de40449
+
+Why use forkJoin?
+This operator is best used when you have a group of observables and only care about the final emitted value of each. One common use case for this is if you wish to issue multiple requests on page load (or some other event) and only want to take action when a response has been received for all. In this way it is similar to how you might use Promise.all.
+
+Be aware that if any of the inner observables supplied to forkJoin error you will lose the value of any other observables that would or have already completed if you do not catch the error correctly on the inner observable. If you are only concerned with all inner observables completing successfully you can catch the error on the outside.
+It's also worth noting that if you have an observable that emits more than one item, and you are concerned with the previous emissions forkJoin is not the correct choice. In these cases you may be better off with an operator like combineLatest or zip.
+
+import { ajax } from 'rxjs/ajax';
+import { forkJoin } from 'rxjs';
+
+/*
+  when all observables complete, provide the last
+  emitted value from each as dictionary
+*/
+forkJoin(
+  // as of RxJS 6.5+ we can use a dictionary of sources
+  {
+    google: ajax.getJSON('https://api.github.com/users/google'),
+    microsoft: ajax.getJSON('https://api.github.com/users/microsoft'),
+    users: ajax.getJSON('https://api.github.com/users')
+  }
+)
+  // { google: object, microsoft: object, users: array }
+  .subscribe(console.log);
+
+
+switch map
+
+You’ll notice some of those requests got cancelled before they finished. Much like takeLatest in Redux-Saga, switchMap in RxJS only cares about the latest value that the observable emitted, in this case cancelling any previous HTTP requests that were still in progress.
+But that wasn’t exactly what I needed.
+
+Much like takeEvery in Redux-Saga, mergeMap in RxJS passes all requests through, even when a new request was made before a previous one had finished — exactly what I needed!
+
+
+ switchMap cancels previous HTTP requests that are still in progress, while mergeMap lets all of them finish.
+In my case, I needed all requests to go through, as this is a metrics service that’s supposed to log all actions that the user performs on the web page, so I used mergeMap.
+A good use case for switchMap would be an autocomplete input, where we should discard all but the latest results from the user’s input.
+
+
+
+Components—directives with a template. This type of directive is the most common directive type.
+Attribute directives—directives that change the appearance or behavior of an element, component, or another directive.
+Structural directives—directives that change the DOM layout by adding and removing DOM elements.
+
+
+Dependency injection in Angular
+Dependencies are services or objects that a class needs to perform its function. Dependency injection, or DI, is a design pattern in which a class requests dependencies from external sources rather than creating them.
+
+
+BehaviourSubject
+BehaviourSubject will return the initial value or the current value on Subscription
+
+var bSubject= new Rx.BehaviorSubject(0);  // 0 is the initial value
+
+bSubject.subscribe({
+  next: (v) => console.log('observerA: ' + v)  // output initial value, then new values on `next` triggers
+});
+
+bSubject.next(1);  // output new value 1 for 'observer A'
+bSubject.next(2);  // output new value 2 for 'observer A', current value 2 for 'Observer B' on subscription
+
+bSubject.subscribe({
+  next: (v) => console.log('observerB: ' + v)  // output current value 2, then new values on `next` triggers
+});
+
+bSubject.next(3);
+
+
+Subject
+Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
+
+var subject = new Rx.Subject();
+
+subject.next(1); //Subjects will not output this value
+
+subject.subscribe({
+  next: (v) => console.log('observerA: ' + v)
+});
+subject.subscribe({
+  next: (v) => console.log('observerB: ' + v)
+});
+
+subject.next(2);
+subject.next(3);
+
 
 
 

@@ -1,0 +1,31 @@
+life cycle hooks
+rest apis
+promise and observable difference
+performance how increase
+error handling
+
+stores
+
+subject and behavioural subject difference
+how lazy loading implemented nad why to use it
+async pipe usage
+directives
+unit testing
+deploy the application
+interceptors
+difference in pure and impure pipe
+angular material
+how do you use interceptor
+difference between angular 8 and angular 12
+ngprime
+
+async/await
+
+hoisting
+inheritance
+var let const diff
+
+interpolation
+ways to pass Passing data between component
+
+
