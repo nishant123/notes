@@ -6,3 +6,12 @@ https://github.com/nishant123/notes.git
 
 To get clone
 git clone https://github.com/nishant123/notes.git
+
+To add all the code
+git add .
+
+To commit the git
+git commit -m "added notes"
+
+To push code in remote repository
+git push 
