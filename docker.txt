@@ -1,0 +1,16 @@
+how to install docker at local
+https://docs.docker.com/docker-for-windows/install/
+
+
+download kernal
+https://docs.microsoft.com/en-gb/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package
+
+https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
+docker file must be there
+
+docker build - < Dockerfile
+To run the docker file
+
+sudo docker build - < Dockerfile
+To run the docker file

@@ -1,0 +1,85 @@
+1
+
+Download demo site from the following url
+git clone https://github.com/angular/quickstart.git quickstart
+
+npm install
+
+https://github.com/angular/quickstart
+extract it  and rename it and open the folder into terminal or command prompt
+
+install nodejs
+npm install
+npm config set proxy <proxy>
+
+npm cache clean
+npm install -g @angular/cli@latest
+npm install --save-dev @angular/cli@latest
+run below command
+ng serve
+
+set below in 
+
+lan setting-> advanced -> put proxy in it.
+
+put angular.io proxy in it
+
+paste it in npmrc given below for 
+
+
+ng update @angular/cli --migrate-only --from=1.7.3
+
+
+npm cache clean --fo
+
+nvm install 14.16  (whatever required)
+
+nvm use 14.16 
+
+
+
+--------------------start ----------------------
+1
+
+check node version it should be higher that 14.15 for angular 13
+node -v
+check npm version
+
+npm -v
+
+npm install -g @angular/cli
+
+ng --version
+
+To create a project
+ng new HelloWorld
+
+after project creation go to inside helloworld folder in command prompt and use below command
+
+ng serve
+
+application will run on it check it on browser
+
+
+http://localhost:4200/
+
+
+
+
+
+
+
+
+
+
+
+
+---------------end--------------------------
+
+
+
+
+
+
+
+
