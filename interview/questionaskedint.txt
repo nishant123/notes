@@ -1,0 +1,23 @@
+1
+closure in javascript
+prototypes in javascript
+
+solid principals of rest api
+rest principals
+
+
+sarding
+replication
+indexing in mongodb
+
+
+
+2
+
+nodejs
+typescript
+mysql
+mongodb
+aws (lambda and sqs)
+
+

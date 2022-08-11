@@ -1,9 +1,16 @@
+Tell me brief about yourself
+tell me about your projects
+why do you want to change
+backend experience
+jira and git knowledge
+
 life cycle hooks
 rest apis
+rxjs 
 promise and observable difference
 performance how increase
 error handling
-
+what is pwa
 stores
 
 subject and behavioural subject difference
@@ -11,13 +18,16 @@ how lazy loading implemented nad why to use it
 async pipe usage
 directives
 unit testing
+coverage of code 
+bamboo used
+
 deploy the application
 interceptors
 difference in pure and impure pipe
 angular material
 how do you use interceptor
-difference between angular 8 and angular 12
-ngprime
+difference between angular 8 and angular 13
+primeng
 
 async/await
 
@@ -27,5 +37,18 @@ var let const diff
 
 interpolation
 ways to pass Passing data between component
+annotation and decorator difference
+depenedency injection
+
+input and output decorator
+
+aws and docker
+
+library creation
+viewchild
+operators in rxjs
+filter, map description 
+switch map and merge map difference
+git and jira have you used
 
 

@@ -1,0 +1,8 @@
+
+install mongodb with compass
+
+run mongodb and run below in compass to check
+
+
+mongodb://localhost:27017
+

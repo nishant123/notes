@@ -1,9 +1,6 @@
-1. make resume of 3+ experience of dot net 
-2. make resume of 3+ experience on management of project.
-3. apply through monster also 
-4. make document big like drupal 7 and use it when interview about to come
-
-
-
-
-
+give full resume and project descriptions read it once again from the projects
+see the vodafone video also to add more things in project
+make documents of angular and node js and do prepare of it.
+give the other companies interview also for confidence and keep laptop with you
+take 2 chapati in nyt only to save time
+see concepts in youtube like redis,orm and so on

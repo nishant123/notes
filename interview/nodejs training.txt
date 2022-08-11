@@ -1,0 +1,29 @@
+node js tutorial
+
+https://www.youtube.com/watch?v=BLl32FvcdVM
+
+
+node js training 
+
+https://www.youtube.com/watch?v=lGiv0zfdiJA
+
+https://heynode.com/tutorial/how-event-loop-works-nodejs/
+
+ist recording
+
+https://rsystemsiltd-my.sharepoint.com/:v:/g/personal/varun_sureka_rsystems_com/EQ6lybbaDZlAokOuPg0bbK4BiQ6FjlcaO38NLfDpUDTJug
+
+
+2nd reco
+
+https://rsystemsiltd-my.sharepoint.com/:v:/g/personal/varun_sureka_rsystems_com/EbDYg1illyFFojIt4sxqvPAB26fYbEvGyaBenVblhZ81iQ
+
+
+3rd rec
+
+https://rsystemsiltd-my.sharepoint.com/:v:/g/personal/varun_sureka_rsystems_com/EXt_1FfMB_xHkCO5OHbMO9EB3WyVRTmPZpYVYsLhfCSaXA
+
+
+
+
+
