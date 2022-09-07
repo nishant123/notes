@@ -563,6 +563,20 @@ const y: number = 'a';
 const z: number = x + y;
 
 // This will give a compile error saying:
+doneeeeeeeeeeeeeee
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Type '"a"' is not assignable to type 'number'.
 
