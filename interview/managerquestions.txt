@@ -1,3 +1,22 @@
+Project managers have a number of tools in their arsenal that can help them address potential challenges and obstacles. One such tool is the project risk register. But what is a risk register, how do you use one, and how can it keep your next project from being derailed?
+
+In this guide, we’ll walk you through exactly what to include in your project risk register and provide details on when and how to build and maintain one for your next project. 
+
+What is a risk register? 
+A project risk register is a tool project managers use to track and monitor any risks that might impact their projects. Risk management is a vital component of project management because it’s how you proactively combat potential problems or setbacks. 
+
+Using a project risk register, also called a risk log, is an essential part of this risk management process. 
+
+What is the purpose of a risk register?
+The purpose of a project management risk register is to identify, log, and track potential project risks. A risk in project management is anything unexpected that could happen that would positively or negatively affect your project. 
+
+Any time someone identifies something that could impact your project, it should be assessed by the team and recorded in your risk register. 
+
+Why do you need a risk register? 
+You need a risk register because, as projects get larger, longer, and more complex, it becomes increasingly difficult to stay on top of everything. If risks aren’t tracked in a central location and reviewed regularly, something may be missed or forgotten. 
+
+
+
 1. Tell me about yourself.
 A common question to open any type of interview, this statement is a chance for you to describe yourself and your story in your own words. 
 

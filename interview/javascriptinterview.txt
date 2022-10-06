@@ -1,3 +1,9 @@
+The main difference between rest and spread is that the rest operator puts the rest of some specific user-supplied values into a JavaScript array. But the spread syntax expands iterables into individual elements.
+
+object.value	object.entries
+It returns only values of all keys present in an object	It returns both keys as well as their values present in an object
+
+
 Difference Between Undefined and Null
 undefined and null are equal in value but different in type:
 
@@ -915,6 +921,31 @@ console.log(b);
 console.log(rest);
 // expected output: Array [30,40,50]
 
+
+The bubbling principle is simple.
+
+When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
+
+Let’s say we have 3 nested elements FORM > DIV > P with a handler on each of them:
+Stopping bubbling
+A bubbling event goes from the target element straight up. Normally it goes upwards till <html>, and then to document object, and some events even reach window, calling all handlers on the path.
+
+But any handler may decide that the event has been fully processed and stop the bubbling.
+
+The method for it is event.stopPropagation().
+
+<body onclick="alert(`the bubbling doesn't reach here`)">
+  <button onclick="event.stopPropagation()">Click me</button>
+</body>
+
+Capturing
+There’s another phase of event processing called “capturing”. It is rarely used in real code, but sometimes can be useful.
+
+The standard DOM Events describes 3 phases of event propagation:
+
+Capturing phase – the event goes down to the element.
+Target phase – the event reached the target element.
+Bubbling phase – the event bubbles up from the element.
 
 
 

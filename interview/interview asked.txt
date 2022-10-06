@@ -1,0 +1,10 @@
+birla soft 6th oct
+clusters
+javascripts
+event bubbling
+event emitter in node and angular
+tell me abt your self
+nodejs and angular
+event handling in node
+foreach and map difference
+document and window differnce

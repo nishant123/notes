@@ -2,3 +2,171 @@
 design patterns
 mvc 
 high level design and low level design and so on
+
+How you describe your work style as an architect?
+your current job role
+
+5. Two team members aren’t getting along and the client is beginning to notice. What would you do to diffuse the situation?
+Example: “I would spend time with both team members, have them explain their concerns and work toward a solution. I would encourage them to come to me should a similar occurrence arise, however, I would explain these circumstances are unacceptable in the workplace—especially with the client present. I would also explain that these disturbances can hinder the team’s overall morale, the resulting project and the client’s trust.”
+
+
+What are design patterns?
+Design patterns, simply put, are a way for you to structure your solution’s code in a way that allows you to gain some kind of benefit. Such as faster development speed, code reusability, and so on.
+
+in node js
+
+Immediately Invoked Function Expressions (IIFE)
+The first pattern I’m going to show you is one that allows you to define and call a function at the same time. Due to the way JavaScript scopes works, using IIFEs can be great to simulate things like private properties in classes. In fact, this particular pattern is sometimes used as part of the requirements of other, more complex ones. We’ll see how in a bit.
+
+(function() {
+   var x = 20;
+   var y = 20;
+   var answer = x + y;
+   console.log(answer);
+})();
+
+In essence, the factory method allows you to centralize the logic of creating objects (meaning, which object to create and why) in a single place. This allows you to forget about that part and focus on simply requesting the object you need and then using it.
+
+This might seem like a small benefit, but bear with me for a second, it’ll make sense, trust me.
+
+( _ => {
+
+    let factory = new MyEmployeeFactory()
+
+    let types = ["fulltime", "parttime", "contractor"]
+    let employees = [];
+    for(let i = 0; i < 100; i++) {
+     employees.push(factory.createEmployee({type: types[Math.floor( (Math.random(2) * 2) )]})    )}
+    
+    //....
+    employees.forEach( e => {
+     console.log(e.speak())
+    })
+
+})()
+Use case
+The previous code already shows a generic use case, but if we wanted to be more specific, one particular use case I like to use this pattern for is handling error object creation.
+
+Imagine having an Express application with about 10 endpoints, wherein every endpoint you need to return between two to three errors based on the user input. We’re talking about 30 sentences like the following:
+
+if(err) {
+  res.json({error: true, message: “Error message here”})
+}
+if(err) {
+  res.json(ErrorFactory.getError(err))
+}
+
+
+Singleton pattern
+This one is another oldie but a goodie. It’s quite a simple pattern, mind you, but it helps you keep track of how many instances of a class you’re instantiating. Actually, it helps you keep that number to just one, all of the time. Mainly, the singleton pattern, allows you to instantiate an object once, and then use that one every time you need it, instead of creating a new one without having to keep track of a reference to it, either globally or just passing it as a dependency everywhere.
+
+Use cases
+When trying to decide if you need a singleton-like implementation or not, you need to consider something: how many instances of your classes will you really need? If the answer is 2 or more, then this is not your pattern.
+
+But there might be times when having to deal with database connections that you might want to consider it.
+
+Think about it, once you’ve connected to your database, it might be a good idea to keep that connection alive and accessible throughout your code. Mind you, this can be solved in a lot of different ways, yes, but this pattern is indeed, one of them.
+
+Observer pattern
+This one is a very interesting pattern, in the sense that it allows you to respond to certain input by being reactive to it, instead of proactively checking if the input is provided. In other words, with this pattern, you can specify what kind of input you’re waiting for and passively wait until that input is provided in order to execute your code. It’s a set and forget kind of deal, if you will.
+
+const http = require('http');
+
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Your own server here');
+});
+
+
+server.on('error', err => {
+    console.log(“Error:: “, err)
+})
+
+server.listen(3000, '127.0.0.1', () => {
+  console.log('Server up and running');
+});
+
+Use cases
+This pattern is, as you might have already guessed, great for dealing with asynchronous calls, since getting the response from an external request can be considered a new input. And what do we have in Node.js, if not a constant influx of asynchronous code into our projects? So next time you’re having to deal with an async scenario consider looking into this pattern.
+
+Another widely spread use case for this pattern, as you’ve seen, is that of triggering particular events. This pattern can be found on any module that is prone to having events triggered asynchronously 
+
+Chain of responsibility
+The chain of responsibility pattern is one that many of use in the world of Node.js have used, without even realizing it.
+
+It consists of structuring your code in a way that allows you to decouple the sender of a request with the object that can fulfill it. In other words, having object A sending request R, you might have three different receiving objects R1, R2, and R3, how can A know which one it should send R to? Should A care about that?
+
+The answer to the last question is: no, it shouldn’t. So instead, if A shouldn’t care about who’s going to take care of the request, why don’t we let R1, R2 and R3 decide by themselves?
+
+Here is where the chain of responsibility comes into play, we’re creating a chain of receiving objects, which will try to fulfill the request and if they can’t, they’ll just pass it along. Does it sound familiar yet?
+
+What does the chain of responsibility look like?
+Here is a very basic implementation of this pattern, as you can see at the bottom, we have four possible values (or requests) that we need to process, but we don’t care who gets to process them, we just need, at least, one function to use them, hence we just send it to the chain and let each one decide whether they should use it or ignore it.
+
+function processRequest(r, chain) {
+
+    let lastResult = null
+    let i = 0
+    do {
+     lastResult = chain[i](r)
+     i++
+    } while(lastResult != null && i < chain.length)
+    if(lastResult != null) {
+     console.log("Error: request could not be fulfilled")
+    }
+}
+
+let chain = [
+    function (r) {
+     if(typeof r == 'number') {
+         console.log("It's a number: ", r)
+         return null
+     }
+     return r
+    },
+    function (r) {
+     if(typeof r == 'string') {
+         console.log("It's a string: ", r)
+         return null
+     }
+     return r
+    },
+    function (r) {
+     if(Array.isArray(r)) {
+         console.log("It's an array of length: ", r.length)
+         return null
+     }
+     return r
+    }
+]
+
+processRequest(1, chain)
+processRequest([1,2,3], chain)
+processRequest('[1,2,3]', chain)
+processRequest({}, chain)
+The output being:
+
+It's a number:  1
+It's an array of length:  3
+It's a string:  [1,2,3]
+Error: request could not be fulfilled
+Use cases
+The most obvious case of this pattern in our ecosystem is the middlewares for ExpressJS. With that pattern, you’re essentially setting up a chain of functions (middlewares) that evaluate the request object and decide to act on it or ignore it. You can think of that pattern as the asynchronous version of the above example, where instead of checking if the function returns a value or not, you’re checking what values are passed to the next callback they call.
+
+var app = express();
+
+app.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next(); //call the next function on the chain
+});
+
+Middlewares are a particular implementation of this pattern since instead of only one member of the chain fulfilling the request, one could argue that all of them could do it. Nevertheless, the rationale behind it is the same.
+
+
+
+
+
+
+

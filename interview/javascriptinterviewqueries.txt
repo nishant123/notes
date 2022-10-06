@@ -1,1 +1,4 @@
 closure in javascript
+es6 read do
+event bubbling and capturing
+
