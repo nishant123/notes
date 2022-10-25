@@ -1,3 +1,7 @@
+Spikes are an invention of Extreme Programming (XP), are a special type of user story that is used to gain the knowledge necessary to reduce the risk of a technical approach, better understand a requirement, or increase the reliability of a story estimate. A spike has a maximum time-box size as the sprint it is contained in it. At the end of a sprint, the spike will be determined that is done or not-done just like any other ordinary user story. A Spike is a great way to mitigate risks early and allows the team ascertain feedback and develop an understanding on an upcoming PBI’s complexity.
+
+
+
 Project managers have a number of tools in their arsenal that can help them address potential challenges and obstacles. One such tool is the project risk register. But what is a risk register, how do you use one, and how can it keep your next project from being derailed?
 
 In this guide, we’ll walk you through exactly what to include in your project risk register and provide details on when and how to build and maintain one for your next project. 
