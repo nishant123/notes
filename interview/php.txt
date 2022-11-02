@@ -1,0 +1,13 @@
+1. Differentiate between variables and constants in PHP
+Few difference between variables and constants in PHP are given below:
+
+Variables	Constants
+The value of a variable can be changed during the execution.	The constant value can’t be changed during script execution.
+
+2. What is a session in PHP?
+A session in PHP is a way to store information to be used across multiple pages of an entire website. The information is not stored on the user’s computer, unlike cookies. In a temporary directory on the server, a file will be created by the session where registered session variables and their values are stored. This information will be available to all pages on the site during that visit.
+
+3. What does PEAR stands for?
+PEAR stands for “PHP Extension and Application Repository”. PEAR is a framework and repository for all of the reusable PHP components.
+
+PEAR provides a higher level of programming for web developers. It contains all kinds of PHP code snippets and libraries. It also provides you with a command-line interface to automatically install packages.
