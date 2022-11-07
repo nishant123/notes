@@ -114,17 +114,17 @@ asked by client
 
 database differences
 endpoints for rest apis
-parameter how use
+parameter how use														
 buffer/stream difference
 status code ask
 404,400,401
 postman header , get and post
 why use
-promises 
+promises 																																									
 pseudo code
 
 angular js
-hacker platform, 2h 
+hacker platform, 2h 																													
 
 frontend and backend proejct
 
