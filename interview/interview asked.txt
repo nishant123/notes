@@ -1,3 +1,15 @@
+angular
+full desc resume
+
+factorial of number
+sum of two no 
+sum(2,4) sum (2),(4)
+map and foreach difference in array
+
+
+
+
+
 php
 
 mysql

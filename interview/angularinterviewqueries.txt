@@ -1,3 +1,10 @@
+apps in a app in angular
+
+cover video whole of basic angular in udemy
+do all questions of angular in spreadsheet and javascript also
+
+viewchild check do
+
 1. observables
 2. different types of directives
 3. promise check
