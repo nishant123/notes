@@ -15,6 +15,10 @@ Should have experience in content migration services
  Should have experience in AWS S3 services
 
 
+Drupal 9 was mostly built in Drupal 8 using deprecations and optional updated dependency support. Unlike previous new major versions, Drupal 9 is not a reinvention of Drupal. There are only two key differences in Drupal 9:
+
+Updates of dependencies to versions that stay supported.
+Removal of our own code that we deprecated with removal before Drupal 9's release.
 
 
 question: difference between d6 and d7
