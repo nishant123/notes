@@ -233,6 +233,48 @@ if deadline in life then you can achieve many things
 
 
 video 5
+in spa in one request lot of html+css+js 
+will come
+js bundle will get
+
+javascript will take over javascript will do work on it 
+
+dynamically could be changed 
+
+non spa everytime request go 
+
+in spa bandwidth can save, data transfer, server load can be less 
+
+when users are more then billion trillion you 
+
+
+in node modules contains all the packages in it why deleting
+we do not give node modules it is created again using npm i
+so put in .gitignore
+
+
+bootstrap css and js will copy from getbootstrap.com through cdn put in index.html 
+
+
+index.css you do not need 
+
+
+some tags not closing then need to end
+class with classname replace it 
+
+bootstrap component could be used 
+
+in public do not use password
+
+npm run build will be optimized it is not used for holding users
+
+nginx server will be used 
+
+nginx / apache server is there for security purpose
+
+
+video 6
+
 
 
 
