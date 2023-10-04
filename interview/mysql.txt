@@ -1,3 +1,867 @@
+1. What is MySQL?
+MySQL is a database management system for web servers. It can grow with the website as it is highly scalable. Most of the websites today are powered by MySQL.
+
+2. What are some of the advantages of using MySQL?
+Flexibility: MySQL runs on all operating systems
+Power: MySQL focuses on performance
+Enterprise-Level SQL Features: MySQL had for some time been lacking in advanced features such as subqueries, views, and stored procedures.
+Full-Text Indexing and Searching
+Query Caching: This helps enhance the speed of MySQL greatly
+Replication: One MySQL server can be duplicated on another, providing numerous advantages
+Configuration and Security
+3. What do you mean by ‘databases’?
+A database is a structured collection of data stored in a computer system and organized in a way to be quickly searched. With databases, information can be rapidly retrieved.
+
+You can download a PDF version of Mysql Interview Questions.
+
+Download PDF
+
+4. What does SQL in MySQL stand for?
+The SQL in MySQL stands for Structured Query Language. This language is also used in other databases such as Oracle and Microsoft SQL Server.  One can use commands such as the following to send requests from a database:
+
+SELECT title FROM publications WHERE author = ' J. K. Rowling’;
+
+Note that SQL is not case sensitive. However, it is a good practice to write the SQL keywords in CAPS and other names and variables in a small case.
+You can check out this SQL Tutorial to learn more about SQL. 
+
+5. What does a MySQL database contain?
+A MySQL database contains one or more tables, each of which contains records or rows. Within these rows are various columns or fields that contain the data itself.
+
+6. How can you interact with MySQL?
+There are three main ways you can interact with MySQL: 
+
+using a command line
+via a web interface
+through a programming language
+7. What are MySQL Database Queries?
+A query is a specific request or a question. One can query a database for specific information and have a record returned.
+
+8. What are some of the common MySQL commands?
+Command	Action
+ALTER	To alter a database or table
+BACKUP	To back-up a table
+\c	To cancel Input
+CREATE	To create a database
+DELETE	To delete a row from a table
+DESCRIBE	To describe a table's columns
+DROP	To delete a database or table
+EXIT(ctrl+c)	To exit
+GRANT	To change user privileges
+HELP (\h, \?)	Display help
+INSERT	Insert data
+LOCK	Lock table(s)
+QUIT(\q)	Same as EXIT
+RENAME	Rename a Table
+SHOW	List details about an object
+SOURCE	Execute a file
+STATUS (\s)	Display the current status
+TRUNCATE	Empty a table
+UNLOCK	Unlock table(s)
+UPDATE	Update an existing record
+USE	Use a database
+9. How do you create a database in MySQL?
+Use the following command to create a new database called ‘books’:
+
+CREATE DATABASE books;
+
+10. How do you create a table using MySQL?
+Use the following to create a table using MySQL:
+
+CREATE TABLE history (
+author VARCHAR(128),
+title VARCHAR(128),
+type VARCHAR(16),
+year CHAR(4)) ENGINE InnoDB;
+11. How do you Insert Data Into MySQL?
+The INSERT INTO statement is used to add new records to a MySQL table:
+
+INSERT INTO table_name (column1, column2, column3,...)
+VALUES (value1, value2, value3,...)
+If we want to add values for all the columns of the table, we do not need to specify the column names in the SQL query. However, the order of the values should be in the same order as the columns in the table. The INSERT INTO syntax would be as follows:
+
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+12. How do you remove a column from a database?
+You can remove a column by using the DROP keyword:
+
+ALTER TABLE classics DROP pages;
+
+13. How to create an Index in MySQL?
+In MySQL, there are different index types, such as a regular INDEX, a PRIMARY KEY, or a FULLTEXT index. You can achieve fast searches with the help of an index. Indexes speed up performance by either ordering the data on disk so it's quicker to find your result or, telling the SQL engine where to go to find your data.
+
+Example: Adding indexes to the history table:
+
+ALTER TABLE history ADD INDEX(author(10));
+ALTER TABLE history ADD INDEX(title(10));
+ALTER TABLE history ADD INDEX(category(5));
+ALTER TABLE history ADD INDEX(year);
+DESCRIBE history;
+14. How to Delete Data From a MySQL Table?
+In MySQL, the DELETE statement is used to delete records from a table:
+
+DELETE FROM table_name
+WHERE column_name = value_name
+15. How do you view a database in MySQL?
+One can view all the databases on the MySQL server host using the following command:
+
+mysql> SHOW DATABASES;  
+
+16. What are the Numeric Data Types in MySQL?
+MySQL has numeric data types for integer, fixed-point, floating-point, and bit values, as shown in the table below. Numeric types can be signed or unsigned, except BIT. A special attribute enables the automatic generation of sequential integer or floating-point column values, which is useful for applications that require a series of unique identification numbers.
+
+Type Name	Meaning
+TINYINT	Very Small Integer
+SMALLINT	Small Integer
+MEDIUMINT	Medium-sized Integer
+INT	Standard Integer
+BIGINT	Large Integer
+DECIMAL	Fixed-point number
+FLOAT	Single-precision floating-point number
+DOUBLE	Double-precision floating-point number
+BIT	Bit-field
+17. What are the String Data Types in MySQL?
+Type Name	Meaning
+CHAR	fixed-length nonbinary(character) string
+VARCHAR	variable-length nonbinary string
+BINARY	fixed-length binary string
+VARBINARY	variable-length binary string
+TINYBLOB	Very small BLOB(binary large object)
+BLOB	Small BLOB
+MEDIUMBLOB	Medium-sized BLOB
+LONGBLOB	Large BLOB
+TINYTEXT	A very small nonbinary string
+TEXT	Small nonbinary string
+MEDIUMTEXT	Medium-sized nonbinary string
+LONGTEXT	Large nonbinary string
+ENUM	An enumeration; each column value is assigned, one enumeration member
+SET	A set; each column value is assigned zero or more set members
+NULL	NULL in SQL is the term used to represent a missing value. A NULL value in a table is a value in a field that appears to be blank. This value is different than a zero value or a field that contains spaces.
+18. What are the Temporal Data Types in MySQL?
+Type Name	Meaning
+DATE	A date value, in ' CCYY-MM-DD ' Format
+TIME	A Time value, in ' hh : mm :ss ' format
+DATETIME	Date and time value, in ' CCYY-MM-DD hh : mm :ss ' format
+TIMESTAMP	A timestamp value, in ' CCYY-MM-DD hh : mm :ss ' format
+YEAR	A year value, in CCYY or YY format
+Example: To select the records with an Order Date of "2018-11-11" from a table:
+
+SELECT * FROM Orders WHERE OrderDate='2018-11-11'
+19. What is BLOB in MySQL?
+BLOB is an acronym that stands for a binary large object. It is used to hold a variable amount of data.
+There are four types of BLOB:
+
+TINYBLOB
+BLOB
+MEDIUMBLOB
+LONGBLOB
+A BLOB can hold a very large amount of data. For example - documents, images, and even videos. You could store your complete novel as a file in a BLOB if needed.
+
+20. How to add users in MySQL?
+You can add a User by using the CREATE command and specifying the necessary credentials. For example:
+
+CREATE USER ‘testuser’ IDENTIFIED BY ‘sample password’;
+ 
+
+Scaler Courses
+ 
+
+Full Stack Specialization - Software Development
+A course by
+Live learning from top instructors around the country along with 1:1 mentorship
+PREMIUM
+
+Data Science & Machine Learning
+A course by
+Live learning from top instructors around the country along with 1:1 mentorship
+PREMIUM
+
+Python Course for Beginners With Certification: Mastering the Essentials
+A course by
+Rahul Janghu
+Welcome to the free Python course online for beginners, designed to help you kickstart your programming journey. This comprehensive Python course offers a certificate upon completion, covering essential topics like basic Python fundamentals, data structures, object-oriented programming, and more. With 9 hours and 48 minutes of content, you'll gain the knowledge and confidence to start working on your Python projects.
+4.90
+Enrolled: 68868
+
+Java Course - Mastering the Fundamentals
+A course by
+Tarun Luthra
+Embark on your programming journey with our comprehensive Free Java Course for Beginners. Master the fundamentals of Java and gain the skills needed for advanced Java development. This easy-to-follow course is designed with beginners in mind, offering a structured learning path to specialize in Java programming. With no prerequisites, this course empowers you to learn Java at your own pace and take the first step toward a promising career in tech.
+5
+Enrolled: 78585
+
+Object Oriented Programming in Java Course Online
+A course by
+Subhesh Kumar
+Discover the power of Object-Oriented Programming with our free beginners Java course. Learn the fundamentals of classes, objects, inheritance, and polymorphism. Dive into encapsulation and abstraction techniques. Gain hands-on experience through practical exercises and projects. Start your coding journey today!
+4.95
+Enrolled: 3215
+
+Computer Networking Course: Master Computer Networking
+A course by
+Srikanth Varma
+Scaler Topics Computer Networks Course is a valuable resource that provides a deep understanding of the fundamental concepts and principles underlying computer networks. Designed for beginners and individuals with limited networking experience, this course aims to equip you with the necessary skills to excel in this exciting domain.
+5
+Enrolled: 4063
+
+Operating System Course: Learn Fundamentals of Operating System
+A course by
+Srikanth Varma
+Scaler Topics free Operating System Course offers a comprehensive overview of operating systems, providing you with a deep understanding of their structure, functionalities, and importance in operating systems.
+5
+Enrolled: 4275
+
+PyTorch for Deep Learning Course
+A course by
+Jamshaid Sohail
+Welcome to our "Free PyTorch for Deep Learning Certification Course Online". Designed specifically for beginners, this course provides a comprehensive introduction to PyTorch, one of the leading frameworks for deep learning.
+4.8
+Enrolled: 1091
+
+Supervised Machine Learning Course
+A course by
+Srikanth Varma
+Welcome to our "Free Supervised Machine Learning Certification Course Online". Designed with beginners in mind, this course introduces the fundamental concepts of supervised machine learning—a pivotal domain in today's AI-driven world.
+5
+Enrolled: 3189
+
+Deep Learning Course: Deep Dive into Deep Learning
+A course by
+Srikanth Varma
+Welcome to our free Deep Learning Course with certification. Designed for beginners, this course offers a comprehensive introduction to the field of deep learning, one of the most exciting and fast-growing areas of artificial intelligence.
+5
+Enrolled: 1785
+
+Free Maths for Machine Learning Course
+A course by
+Srikanth Varma
+Welcome to our "Free Mathematics for Machine Learning Online This free Mathematics for Machine Learning course is designed to provide an essential foundation in the key mathematical concepts used in ML algorithms. It covers linear algebra, calculus, and probability, allowing learners to understand and implement machine learning models effectively. The course is suitable for beginners and seasoned professionals.
+5
+Enrolled: 2550
+
+Unsupervised Machine Learning Course
+A course by
+Srikanth Varma
+Welcome to our “Free Unsupervised Machine Learning Certification Course Online”. This course is designed to make the complex world of unsupervised learning accessible to beginners.
+5
+Enrolled: 1226
+
+Data Science Course - Mastering the Fundamentals
+A course by
+Yash Sinha
+Welcome to our Data Science Course for beginners, designed to empower beginners with the essential skills to excel in today's data-driven world. Our comprehensive curriculum will give you a solid foundation in statistics, programming, data visualization, and machine learning.
+4.7
+Enrolled: 8241
+
+Keras & TensorFlow for Deep Learning
+A course by
+Gaurav Sisodia
+Are you a beginner looking to learn Deep Learning using Keras and TensorFlow? Look no further! We’ve got just the thing for you - a free online certification course that will teach you the fundamentals of Deep Learning and help you build the understanding of Keras and TensorFlow. With our course, you’ll be able to learn at your own pace and gain a solid foundation in the latest Deep Learning techniques.
+4.8
+Enrolled: 1344
+
+Spring Boot Course: Certified Course for Essential Skills
+A course by
+Arnav Gupta
+This Spring Boot Course is a beginner-friendly course designed to help you learn the fundamentals of Spring Boot. You’ll gain hands-on experience in building Spring Boot applications, using various tools and technologies.
+5
+Enrolled: 5489
+
+Maths for Programmers
+A course by
+Prateek Narang
+This Scaler Topics Maths for Programmers Free Course is aimed at programmers who wish to improve their math skills. It is an extremely comrehensive course for beginners. It covers essential math concepts that are frequently used in programming, including algebra, calculus, probability, and statistics. With this course, you'll gain a deeper understanding of how math applies to programming and how you can leverage it to improve your code.
+5
+Enrolled: 3778
+
+Coding Essentials: Learn Logic Building for Beginners Free Course
+A course by
+Prateek Narang
+This Scaler Topics free online course on logic building for beginners will introduce you to the fundamental concepts of programming logic. You will learn how to approach complex problems, break them down into smaller parts, and solve them logically. The course is suitable for beginners who have no prior programming experience.
+5
+Enrolled: 4972
+
+Machine Coding Tic Tac Toe - LLD Case Study
+A course by
+Arnav Gupta
+Scaler Topics Tic Tac Toe Course Free Course offers a comprehensive introduction to the Low-Level Design (LLD) of a machine-coded Tic Tac Toe game. As a beginner, you will learn the fundamental concepts of object-oriented programming, data structures, and algorithms while working on a real-world project. By the end of this course, you will be proficient in designing and implementing a complete Tic Tac Toe game from scratch.
+5
+Enrolled: 1149
+
+Node JS Certification Course - Master the Fundamentals
+A course by
+Mrinal Bhattacharya
+The Scaler Topics Node JS free course with certification is an online learning program designed for beginners who are interested in learning about server-side web development. This course will introduce you to Node.js, its architecture, and its uses in web development. The course is self-paced and can be taken online from anywhere in the world.
+4.8
+Enrolled: 7672
+
+SQL for Beginners: Learn SQL using MySQL and Database Design Course
+A course by
+Prateek Narang
+Are you interested in learning SQL using MySQL? Look no further than our comprehensive free online course! Scaler Topics SQL using MySQL free course is designed with beginners in mind and will teach you the fundamentals of SQL and MySQL, enabling you to build a solid foundation in database management.
+5
+Enrolled: 12600
+
+Data Structures in C++ Course
+A course by
+Aditya Jain
+Scaler Topics Data Structures and Algorithms in C++ online course is designed for beginners who are interested in learning data structures and algorithms in C++. The course is free and can be accessed from anywhere at any time. The course is self-paced, which means that you can learn at your own pace.
+4.5
+Enrolled: 9821
+
+Java DSA Course - Master the Fundamentals and Beyond
+A course by
+Subhesh Kumar
+Scaler Topics free Java DSA course is designed to help you prepare for data structure and algorithm (DSA) interview questions using Java. It is suitable for beginners who want to learn DSA problem solving and its applications in job interviews.
+4.95
+Enrolled: 18303
+
+DSA Problem Solving for Interviews using Java
+A course by
+Jitender Punia
+Scaler Topics free online course is designed to help you prepare for data structure and algorithm (DSA) interview questions using Java. It is suitable for beginners who want to learn DSA problem solving and its applications in job interviews.
+4.9
+Enrolled: 27005
+
+DBMS Course - Master the Fundamentals and Advanced Concepts
+A course by
+Srikanth Varma
+Scaler Topics free DBMS course is designed to help beginners learn about the fundamental concepts of database management systems. The course is completely online, and it comes with a free certificate of completion that you can add to your resume or LinkedIn profile. You'll learn about the most popular DBMS like MySQL, Oracle, and SQL Server, as well as the theoretical foundations of databases.
+5
+Enrolled: 35306
+
+Python and SQL for Data Science
+A course by
+Srikanth Varma
+Introducing the Free Data Science with Python and SQL Certification Course Online, a comprehensive beginner's program designed to help aspiring data scientists learn the essential skills in the rapidly growing field of data science. This course offers a unique blend of practical and theoretical knowledge, combining the powerful programming language Python and the versatile database management system SQL to help you analyze, visualize, and interpret data efficiently.
+5
+Enrolled: 28902
+
+EDA and Data Visualization Course in Data Science
+A course by
+Srikanth Varma
+This free EDA (Exploratory Data Analysis) and Data Visualization course offers learners a comprehensive understanding of data analysis techniques and visualization tools. Designed for beginners and professionals, the course focuses on practical applications, using open-source tools like Python, Pandas, and Matplotlib for hands-on learning and real-world problem-solving.
+5
+Enrolled: 5751
+
+JavaScript Course With Certification: Unlocking the Power of JavaScript
+A course by
+Mrinal Bhattacharya
+Kickstart your journey into web development with this free JavaScript course online with a certificate. Designed for beginners, this comprehensive JavaScript online course covers the essential concepts and skills needed to master Javascript, one of the most popular and widely used programming languages in the world. With a course duration of 10 hours and 9 minutes, you'll learn everything from the basics to advanced techniques, all at your own pace.
+4.8
+Enrolled: 34667
+
+Dynamic Programming Course - Learn Optimizing Complex Problems
+A course by
+Tarun Malhotra
+Scaler Topics free Dynamic Programming course offers a comprehensive introduction to the theory and practice of Dynamic Programming. You will learn how to approach and solve problems using this technique, and how to apply it to a variety of scenarios.
+4.9
+Enrolled: 5084
+
+String Pattern Matching: KMP Algorithm
+A course by
+Satya Sai
+This is Scaler Topics free online course on string pattern matching using the KMP algorithm. The course is designed for beginners who want to learn how to use the KMP algorithm to solve complex string matching problems.
+4.95
+Enrolled: 3017
+
+Quora System Design Course
+A course by
+Tarun Malhotra
+Scaler Topics Quora System Design Course is a free online course that covers the basics of Quora's underlying infrastructure. This course is ideal for anyone who is curious about how Quora works and wants to learn more about system design.
+4.9
+Enrolled: 2156
+
+Instagram System Design Course: From Concept to Reality
+A course by
+Anshuman Singh
+The Scaler Topics free Instagram System Design course is designed to help you understand the complex architecture of Instagram. In this system design course, you will learn about the various components of the Instagram system, such as the photo and video sharing platform, feed generation, search engine, notifications, and more. You will also learn how these components are interconnected to create a seamless user experience.
+5
+Enrolled: 10084
+
+SQL v/s NoSQL Course
+A course by
+Mohit Yadav
+Scaler Topics SQL vs NoSQL free course is designed for those who are interested in learning about the differences between SQL and NoSQL databases. It's a free online course that comes with a certificate upon completion. In this course, you'll learn about the key features and benefits of both SQL and NoSQL databases, as well as how to choose the right one for your specific needs.
+4.8
+Enrolled: 7182
+Why Scaler Premium?
+PREMIUM
+Explore Scaler Premium Program and unlock a world of benefits
+
+Structured Curriculum
+Experience expert-led learning with our industry-proven curriculum
+
+1:1 Mentorship Sessions
+Learn from industry experts with our personalised 1:1 Mentorship
+
+Career Support
+We're dedicated to helping you achieve your career goals
+Explore Scaler for FREE
+Intermediate MySQL Interview Questions
+1. What are MySQL “Views”?
+In MySQL, a view consists of a set of rows that is returned if a particular query is executed. This is also known as a ‘virtual table’. Views make it easy to retrieve the way of making the query available via an alias. 
+The advantages of views are:
+
+Simplicity
+Security
+Maintainability
+2. How do you create and execute views in MySQL?
+Creating a view is accomplished with the CREATE VIEW statement. As an example:
+
+CREATE
+   [OR REPLACE]
+   [ALGORITHM = {MERGE | TEMPTABLE | UNDEFINED }]
+   [DEFINER = { user | CURRENT_USER }]
+   [SQL SECURITY { DEFINER | INVOKER }]
+   VIEW view_name [(column_list)]
+   AS select_statement
+   [WITH [CASCADED | LOCAL] CHECK OPTION]
+3. What are MySQL Triggers?
+A trigger is a task that executes in response to some predefined database event, such as after a new row is added to a particular table. Specifically, this event involves inserting, modifying, or deleting table data, and the task can occur either prior to or immediately following any such event. 
+Triggers have many purposes, including:
+
+Audit Trails
+Validation
+Referential integrity enforcement
+4. How many Triggers are possible in MySQL?
+There are six Triggers allowed to use in the MySQL database:
+
+Before Insert
+After Insert
+Before Update
+After Update
+Before Delete
+After Delete
+5. What is the MySQL server?
+The server, mysqld, is the hub of a MySQL installation; it performs all manipulation of databases and tables.
+
+6. What are the MySQL clients and utilities?
+Several MySQL programs are available to help you communicate with the server. For administrative tasks, some of the most important ones are listed here:
+
+• mysql—An interactive program that enables you to send SQL statements to the server and to view the results. You can also use mysql to execute batch scripts (text files containing SQL statements).
+
+• mysqladmin—An administrative program for performing tasks such as shutting down the server, checking its configuration, or monitoring its status if it appears not to be functioning properly.
+
+• mysqldump—A tool for backing up your databases or copying databases to another server.
+
+• mysqlcheck and myisamchk—Programs that help you perform table checking, analysis, and optimization, as well as repairs if tables become damaged. mysqlcheck works with MyISAM tables and to some extent with tables for other storage engines. myisamchk is for use only with MyISAM tables.
+
+7. What are the types of relationships used in MySQL?
+There are three categories of relationships in MySQL:
+
+One-to-One: Usually, when two items have a one-to-one relationship, you just include them as columns in the same table.
+One-to-Many: One-to-many (or many-to-one) relationships occur when one row in one table is linked to many rows in another table.
+Many-to-Many: In a many-to-many relationship, many rows in one table are linked to many rows in another table. To create this relationship, add a third table containing the same key column from each of the other tables
+Advanced MySQL Interview Questions
+1. Can you explain the logical architecture of MySQL?
+The top layer contains the services most network-based client/server tools or servers need such as connection handling, authentication, security, and so forth.
+The second layer contains much of MySQL’s brains. This has the code for query parsing, analysis, optimization, caching, and all the built-in functions.
+
+The third layer contains the storage engines that are responsible for storing and retrieving the data stored in MySQL.
+
+
+2. What is Scaling in MySQL?
+In MySQL, scaling capacity is actually the ability to handle the load, and it’s useful to think of load from several different angles such as:
+
+Quantity of data
+Number of users
+User activity
+Size of related datasets
+3. What is Sharding in SQL?
+The process of breaking up large tables into smaller chunks (called shards) that are spread across multiple servers is called Sharding. 
+The advantage of Sharding is that since the sharded database is generally much smaller than the original; queries, maintenance, and all other tasks are much faster.
+
+4. What are Transaction Storage Engines in MySQL?
+To be able to use MySQL’s transaction facility, you have to be using MySQL’s InnoDB storage engine (which is the default from version 5.5 onward). If you are not sure which version of MySQL your code will be running on, rather than assuming InnoDB is the default engine you can force its use when creating a table, as follows.
+
+Conclusion
+1. Conclusion
+Several free or low-cost database management systems are available from which to choose, such as MySQL, PostgreSQL, or SQLite.
+
+When you compare MySQL with other database systems, think about what’s most important to you. Performance, features (such as SQL conformance or extensions), support, licensing conditions, and price all are factors to take into account.
+
+MySQL is one of the best RDBMS being used for developing various web-based software applications.
+
+MySQL is offered under two different editions: the open-source MySQL Community Server and the proprietary Enterprise Server.
+Given these considerations, MySQL has many attractive qualities:
+
+Speed
+Ease of use
+Query language support
+Capability
+Connectivity and security
+Portability
+Availability and cost
+Open distribution and source code
+
+For, your better understanding, I will be considering the following tables to write queries.
+
+Course Curriculum
+Microsoft SQL Server Certification Course
+EmployeeInfo Table:
+EmpID
+
+EmpFname
+
+EmpLname
+
+Department
+
+Project
+
+Address
+
+DOB
+
+Gender
+
+1
+
+Sanjay
+
+Mehra
+
+HR
+
+P1
+
+Hyderabad(HYD)
+
+01/12/1976
+
+M
+
+2
+
+Ananya
+
+Mishra
+
+Admin
+
+P2
+
+Delhi(DEL)
+
+02/05/1968
+
+F
+
+3
+
+Rohan
+
+Diwan
+
+Account
+
+P3
+
+Mumbai(BOM)
+
+01/01/1980
+
+M
+
+4
+
+Sonia
+
+Kulkarni
+
+HR
+
+P1
+
+Hyderabad(HYD)
+
+02/05/1992
+
+F
+
+5
+
+Ankit
+
+Kapoor
+
+Admin
+
+P2
+
+Delhi(DEL)
+
+03/07/1994
+
+M
+
+EmployeePosition Table:
+EmpID
+
+EmpPosition
+
+DateOfJoining
+
+Salary
+
+1
+
+Manager
+
+01/05/2022
+
+500000
+
+2
+
+Executive
+
+02/05/2022
+
+75000
+
+3
+
+Manager
+
+01/05/2022
+
+90000
+
+2
+
+Lead
+
+02/05/2022
+
+85000
+
+1
+
+Executive
+
+01/05/2022
+
+300000
+
+Let us start by taking a look at some of the most frequently asked SQL Query interview questions,   
+
+Write a query to fetch the EmpFname from the EmployeeInfo table in the upper case and use the ALIAS name as EmpName.
+Write a query to fetch the number of employees working in the department ‘HR’.
+Write a query to get the current date.
+Write a query to retrieve the first four characters of  EmpLname from the EmployeeInfo table.
+Write a query to fetch only the place name(string before brackets) from the Address column of EmployeeInfo table.
+Write a query to create a new table that consists of data and structure copied from the other table.
+Write q query to find all the employees whose salary is between 50000 to 100000.
+Write a query to find the names of employees that begin with ‘S’
+Write a query to fetch top N records.
+Write a query to retrieve the EmpFname and EmpLname in a single column as “FullName”. The first name and the last name must be separated with space.
+Q1. Write a query to fetch the EmpFname from the EmployeeInfo table in upper case and use the ALIAS name as EmpName.
+1
+SELECT UPPER(EmpFname) AS EmpName FROM EmployeeInfo;
+Q2. Write a query to fetch the number of employees working in the department ‘HR’.
+1
+SELECT COUNT(*) FROM EmployeeInfo WHERE Department = 'HR';
+Q3. Write a query to get the current date.
+You can write a query as follows in SQL Server:
+
+1
+SELECT GETDATE();
+You can write a query as follows in MySQL:
+
+Databases Training
+1
+SELECT SYSTDATE();
+Q4. Write a query to retrieve the first four characters of  EmpLname from the EmployeeInfo table.
+1
+SELECT SUBSTRING(EmpLname, 1, 4) FROM EmployeeInfo;
+Q5. Write a query to fetch only the place name(string before brackets) from the Address column of EmployeeInfo table.
+Using the MID function in MySQL
+
+1
+SELECT MID(Address, 0, LOCATE('(',Address)) FROM EmployeeInfo;
+Using SUBSTRING
+1
+SELECT SUBSTRING(Address, 1, CHARINDEX('(',Address)) FROM EmployeeInfo;
+Q6. Write a query to create a new table which consists of data and structure copied from the other table.
+Using the SELECT INTO command:
+
+1
+SELECT * INTO NewTable FROM EmployeeInfo WHERE 1 = 0;
+Using the CREATE command in MySQL:
+
+Course Curriculum
+Microsoft SQL Server Certification Course
+Weekday / Weekend Batches
+1
+CREATE TABLE NewTable AS SELECT * FROM EmployeeInfo;
+Q7. Write q query to find all the employees whose salary is between 50000 to 100000.
+1
+SELECT * FROM EmployeePosition WHERE Salary BETWEEN '50000' AND '100000';
+Q8. Write a query to find the names of employees that begin with ‘S’
+1
+SELECT * FROM EmployeeInfo WHERE EmpFname LIKE 'S%';
+Q9. Write a query to fetch top N records.
+By using the TOP command in SQL Server:
+
+1
+SELECT TOP N * FROM EmployeePosition ORDER BY Salary DESC;
+By using the LIMIT command in MySQL:
+
+1
+SELECT * FROM EmpPosition ORDER BY Salary DESC LIMIT N;
+Q10. Write a query to retrieve the EmpFname and EmpLname in a single column as “FullName”. The first name and the last name must be separated with space.
+1
+SELECT CONCAT(EmpFname, ' ', EmpLname) AS 'FullName' FROM EmployeeInfo;
+Q11. Write a query find number of employees whose DOB is between 02/05/1970 to 31/12/1975 and are grouped according to gender
+1
+SELECT COUNT(*), Gender FROM EmployeeInfo WHERE DOB BETWEEN '02/05/1970 ' AND '31/12/1975' GROUP BY Gender;
+Q12. Write a query to fetch all the records from the EmployeeInfo table ordered by EmpLname in descending order and Department in the ascending order.
+To order the records in ascending and descnding order, you have to use the ORDER BY statement in SQL.
+
+1
+SELECT * FROM EmployeeInfo ORDER BY EmpFname desc, Department asc;
+Q13. Write a query to fetch details of employees whose EmpLname ends with an alphabet ‘A’ and contains five alphabets.
+To fetch details mathcing a certain value, you have to use the LIKE operator in SQL.
+
+1
+SELECT * FROM EmployeeInfo WHERE EmpLname LIKE '____a';
+Q14. Write a query to fetch details of all employees excluding the employees with first names, “Sanjay” and “Sonia” from the EmployeeInfo table.
+1
+SELECT * FROM EmployeeInfo WHERE EmpFname NOT IN ('Sanjay','Sonia');
+Want to upskill yourself to get ahead in your career? Check out this video
+ 
+
+Top 10 Technologies to Learn in 2022 | Edureka
+
+ 
+
+Q15. Write a query to fetch details of employees with the address as “DELHI(DEL)”.
+1
+SELECT * FROM EmployeeInfo WHERE Address LIKE 'DELHI(DEL)%';
+Q16. Write a query to fetch all employees who also hold the managerial position.
+1
+2
+3
+SELECT E.EmpFname, E.EmpLname, P.EmpPosition 
+FROM EmployeeInfo E INNER JOIN EmployeePosition P ON
+E.EmpID = P.EmpID AND P.EmpPosition IN ('Manager');
+Q17. Write a query to fetch the department-wise count of employees sorted by department’s count in ascending order.
+1
+2
+3
+SELECT Department, count(EmpID) AS EmpDeptCount 
+FROM EmployeeInfo GROUP BY Department 
+ORDER BY EmpDeptCount ASC;
+Q18. Write a query to calculate the even and odd records from a table.
+To retrieve the even records from a table, you have to use the MOD() function as follows:
+
+1
+SELECT EmpID FROM (SELECT rowno, EmpID from EmployeeInfo) WHERE MOD(rowno,2)=0;
+Similarly, to retrieve the odd records from a table, you can write a query as follows:
+
+1
+SELECT EmpID FROM (SELECT rowno, EmpID from EmployeeInfo) WHERE MOD(rowno,2)=1;
+Q19. Write a SQL query to retrieve employee details from EmployeeInfo table who have a date of joining in the EmployeePosition table.
+1
+2
+3
+SELECT * FROM EmployeeInfo E 
+WHERE EXISTS 
+(SELECT * FROM EmployeePosition P WHERE E.EmpId = P.EmpId);
+Q20. Write a query to retrieve two minimum and maximum salaries from the EmployeePosition table.
+To retrieve two minimum salaries, you can write a query as below:
+
+1
+2
+3
+SELECT DISTINCT Salary FROM EmployeePosition E1 
+ WHERE 2 >= (SELECTCOUNT(DISTINCT Salary)FROM EmployeePosition E2 
+  WHERE E1.Salary >= E2.Salary) ORDER BY E1.Salary DESC;
+To retrieve two maximum salaries, you can write a query as below: 
+1
+2
+3
+SELECT DISTINCT Salary FROM EmployeePosition E1 
+ WHERE 2 >= (SELECTCOUNT(DISTINCT Salary) FROM EmployeePosition E2 
+  WHERE E1.Salary <= E2.Salary) ORDER BY E1.Salary DESC;
+
+Q21. Write a query to find the Nth highest salary from the table without using TOP/limit keyword.
+1
+2
+3
+4
+5
+6
+SELECT Salary 
+FROM EmployeePosition E1 
+WHERE N-1 = ( 
+      SELECT COUNT( DISTINCT ( E2.Salary ) ) 
+      FROM EmployeePosition E2 
+      WHERE E2.Salary >  E1.Salary );
+Q22. Write a query to retrieve duplicate records from a table.
+1
+2
+3
+SELECT EmpID, EmpFname, Department COUNT(*) 
+FROM EmployeeInfo GROUP BY EmpID, EmpFname, Department 
+HAVING COUNT(*) > 1;
+Q23. Write a query to retrieve the list of employees working in the same department.
+1
+2
+3
+Select DISTINCT E.EmpID, E.EmpFname, E.Department 
+FROM EmployeeInfo E, Employee E1 
+WHERE E.Department = E1.Department AND E.EmpID != E1.EmpID;
+Q24. Write a query to retrieve the last 3 records from the EmployeeInfo table.
+1
+2
+3
+4
+SELECT * FROM EmployeeInfo WHERE
+EmpID <=3 UNION SELECT * FROM
+(SELECT * FROM EmployeeInfo E ORDER BY E.EmpID DESC) 
+AS E1 WHERE E1.EmpID <=3;
+Q25. Write a query to find the third-highest salary from the EmpPosition table.
+1
+2
+3
+4
+5
+6
+SELECT TOP 1 salary
+FROM(
+SELECT TOP 3 salary
+FROM employee_table
+ORDER BY salary DESC) AS emp
+ORDER BY salary ASC;
+Q26. Write a query to display the first and the last record from the EmployeeInfo table.
+To display the first record from the EmployeeInfo table, you can write a query as follows:
+
+1
+SELECT * FROM EmployeeInfo WHERE EmpID = (SELECT MIN(EmpID) FROM EmployeeInfo);
+To display the last record from the EmployeeInfo table, you can write a query as follows:
+
+1
+SELECT * FROM EmployeeInfo WHERE EmpID = (SELECT MAX(EmpID) FROM EmployeeInfo);
+Q27. Write a query to add email validation to your database
+1
+SELECT Email FROM EmployeeInfo WHERE NOT REGEXP_LIKE(Email, ‘[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}’, ‘i’);
+Q28. Write a query to retrieve Departments who have less than 2 employees working in it.
+1
+SELECT DEPARTMENT, COUNT(EmpID) as 'EmpNo' FROM EmployeeInfo GROUP BY DEPARTMENT HAVING COUNT(EmpD) < 2;
+Q29. Write a query to retrieve EmpPostion along with total salaries paid for each of them.
+1
+SELECT EmpPosition, SUM(Salary) from EmployeePosition GROUP BY EmpPosition;
+Q30. Write a query to fetch 50% records from the EmployeeInfo table.
+1
+2
+3
+SELECT * 
+FROM EmployeeInfo WHERE
+EmpID <= (SELECT COUNT(EmpID)/2 from EmployeeInfo);
+So this brings us to the end of the SQL Query  Interview Questions article. I hope this set of SQL 
+
 the main differences between INNODB and MYISAM
 The most commonly used storage engine in MySQL are MyISAM and InnoDB.
 
