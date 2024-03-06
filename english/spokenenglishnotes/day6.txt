@@ -1,0 +1,31 @@
+budget
+edge
+fridge
+sign
+design
+benign
+align
+I am sad.
+I am happy.
+I am worried.
+I am bored.
+I am satisfied.
+I am surprised.
+I am sick.
+I am sleepy.
+
+बजट
+किनारा
+फ़्रिज
+संकेत
+डिज़ाइन
+सौम्य
+संरेखित
+मैं दुःखी हूं।
+मैं खुश हूँ।
+मैं चिंतित हूँ।
+मुझे ऊबन हो चुकी है।
+मैं संतुष्ट हूं।
+मैं हैरान हूँ।
+मैं बीमार हूं।
+मुझे नींद अ।

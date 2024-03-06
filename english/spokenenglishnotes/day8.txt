@@ -1,0 +1,65 @@
+I am nervous.
+I am ashamed.
+I am suspicious.
+I am weak.
+I am married.
+I am single.
+I am intelligent.
+I am confident.
+I am lazy.
+I am quick.
+I am slow.
+I am clever.
+I am brave.
+I am honest.
+I am greedy.
+I am rich.
+I am poor.
+I am innocent.
+I am cruel.
+I am sensible.
+I am shy.
+
+मैं घबरा रहा हूँ।
+मैं बहुत शर्मिंदा हु।
+मुझे संदेह है।
+मैं कमजोर हूं।
+मैं शादीशुदा हूं.
+मैं अविवाहित हूं।
+मैं बुद्धिमान हूँ।
+मैं आश्वस्त हूँ।
+मैं आलसी हूँ।
+मैं जल्दी हूँ.
+मेरी गति थोड़ी धीमी है।
+मैं चतुर हूं।
+मैं बहादुर हूँ।
+मैं ईमानदार हूं।
+मैं लालची हूं.
+मैं अमीर हूं।
+मैं गरीब हूं।
+मैं निर्दोष हूं।
+मैं क्रूर हूँ.
+मैं समझदार हूं.
+मैं शर्मीला हूँ।
+main ghabara raha hoon.
+main bahut sharminda hu.
+mujhe sandeh hai.
+main kamajor hoon.
+main shaadeeshuda hoon.
+main avivaahit hoon.
+main buddhimaan hoon.
+main aashvast hoon.
+main aalasee hoon.
+main jaldee hoon.
+meree gati thodee dheemee hai.
+main chatur hoon.
+main bahaadur hoon.
+main eemaanadaar hoon.
+main laalachee hoon.
+main ameer hoon.
+main gareeb hoon.
+main nirdosh hoon.
+main kroor hoon.
+main samajhadaar hoon.
+main sharmeela hoon.
+

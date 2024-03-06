@@ -1,0 +1,51 @@
+I am mistaken.
+I am excited.
+I am anxious.
+I am upset.
+I am angry.
+I am confused.
+I am cautious.
+I am fine.
+I am good.
+I am tired.
+I am desperate.
+I am impressed.
+I am proud.
+I am quiet.
+I am serious.
+I am jealous.
+I am annoyed.
+I am disappointed.
+I am scared.
+I am hurt.
+I am ready.
+I am frustrated.
+I am alone.
+I am serious.
+I am jealous.
+
+मैं गलत हूँ।
+मैं उत्साहित हूं।
+मैं उत्सुक हूं।
+मैं परेशान हूँ।
+मुझे गुस्सा।
+मैं उलझन में हूं।
+मैं सतर्क हूं.
+मैं ठीक हूँ।
+मैं अच्छा हूँ।
+मैं थक गया हूँ।
+मैं बेताब हूं।
+मैं प्रभावित हूँ।
+मुझे गर्व है।
+मैं शांत हूं।
+मैं गंभीर हूँ।
+मुझे जलन हो रही है।
+मैं नाराज़ हूं।
+मैं निराश हूँ।
+मैं डरता हूँ।
+मैं घायल हूं।
+मैं तैयार हूँ।
+मैं परेशान हो गया हूं।
+मेँ अकेला हूँ।
+मैं गंभीर हूँ।
+मुझे जलन हो रही है।
