@@ -1,0 +1,14 @@
+Feedback about test
+
+
+1 You have not created the professional things upto the mark in one day test. As I generally have to show the output daily basis to customer. This design was not good  to show to client
+2 alignment of text and images are poor.
+3 Big images are used it will increase loading time at server. So please use small images as compare to big images.
+4 I can not show this design as output to client as one day output so improve the things at your end.
+
+suggestion
+
+1 improve the current design into professional such that if any requirement comes in future the professional design must be available with in 4h by reusing the current code.
+2 Make one professional ecommerce theme and one company theme and keep it with you such that if any work come you can do changes quickly and can show design to client because daily wise output is expected.
+3 if possible make design in photoshop first such that things could be done quickly.
+4 Please continue in improving it.
