@@ -1,0 +1,20 @@
+query
+
+s3 detail, lambda detail, route 53, elastic load balancing
+aws course do from udemy
+aws notes write from notes
+services in aws
+sns detail, cloud watch, javascript,angular, nodejs, react, notes complete do
+react js videos attend do and prepare it
+management resume ready do and other fields also like tech architect
+design pattern notes
+javascript code practice do all
+angular basic code or crud operation be ready for it
+
+mysql, reactjs, javascript,angular, nodejs query
+
+event bubbling, object destructuring, code of diff-2 programs,es6 feature, control flow, closure funct, higher order eg, closure eg, angular questions do,pure and impure pipe eg in angular,
+view child in angular, diff between angular prev version and latest one, take and takeuntill operator, latestfrom and combinelatest , security measures in nodejs, unit testing in jasmine and karma,
+more prj description in resume, adobe photoshop notes
+
+
